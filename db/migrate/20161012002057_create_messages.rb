@@ -5,7 +5,6 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :chat_group_id
       t.integer :user_id
       t.string :image
-
       t.timestamps null: false
     end
   end
