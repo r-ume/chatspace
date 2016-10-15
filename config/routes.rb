@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
    GET '/' => 'chaggroups#index'
-   
+
+   #UsersControllerを作成するときに、deviseをインストールする   
    #get '/users/sign_up'　#サインアップページ
    #get '/users/sign_in' #ログインページ
 
