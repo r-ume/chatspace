@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+   GET '/' => 'chaggroups#index'
+   
+   #get '/users/sign_up'　#サインアップページ
+   #get '/users/sign_in' #ログインページ
+
+   GET 'chat_groups' => 'chatgroups#index' #チャットグループ一覧
+   GET 'chat_groups/new' => 'chatgroups#new' 
+   POST 'chat_groups' => 'chatgroups#create' 
+   GET 'chat_groups/:chat_group_id/edit' => 'chatgroups#edit' #チャットグループ一覧
+   PATCH 'chat_groups/:chat_group_id' => 'chatgroupd#update'
+   GET 'chat_groups/:chat_group_id' => 'messages#index'
+   POST 'chat_groups/:chat_group_id' => 'messages#create' 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
