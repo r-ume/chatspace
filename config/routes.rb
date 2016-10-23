@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+   
+   root 'messages#index'
+   resources :messages, only: :create
+
    get '/' => 'chatgroups#index'
 
    #UsersControllerを作成するときに、deviseをインストールする   
@@ -10,8 +14,12 @@ Rails.application.routes.draw do
    post 'chat_groups' => 'chatgroups#create' 
    get 'chat_groups/:chat_group_id/edit' => 'chatgroups#edit' #チャットグループ一覧
    patch 'chat_groups/:chat_group_id' => 'chatgroupd#update'
-   get 'chat_groups/:chat_group_id' => 'messages#index'
-   post 'chat_groups/:chat_group_id' => 'messages#create' 
+
+  # get 'chat_groups/:chat_group_id' => 'messages#index'
+  # post 'chat_groups/:chat_group_id' => 'messages#create'
+
+
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
