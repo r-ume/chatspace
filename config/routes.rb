@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
    
-   root 'messages#index'
-   resources :messages, only: :create
+   # root 'messages#index'
+   # resources :messages, only: :create
 
-   get '/' => 'chatgroups#index'
+   get '/messages' => 'messages#index'
+   post '/messages' => 'messages#create'
 
    #UsersControllerを作成するときに、deviseをインストールする   
    #get '/users/sign_up'　#サインアップページ
