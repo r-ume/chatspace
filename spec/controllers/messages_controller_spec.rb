@@ -12,9 +12,8 @@ describe MessagesController do
 
   describe 'POST #create' do
     it 'create a new message' do
-      expect {
-        post :message, message: params
-      }.to change(Message, :count).by(1)
+      post :message, message: attributes_for(:message)
+      expect(Message.count).to eq(1)
     end
   end
 end
