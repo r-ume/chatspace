@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe MessagesController do
+
   describe 'GET #index' do
     it 'renders the :index template' do
       messages = Message.all
@@ -11,9 +12,14 @@ describe MessagesController do
   end
 
   describe 'POST #create' do
-    it 'create a new message' do
-      post :message, message: attributes_for(:message)
-      expect(Message.count).to eq(1)
+      let(:message) { Message.create(body: 'RSpec', chat_group_id: 1 , user_id: 1, image: 'rspec.jpg') }
+      before do
+        message # ここでデータベースにレコードを保存する
+      end
+
+      it 'create a new message' do
+        expect(Message.last).to eq message
+      end
     end
-  end
 end
+
