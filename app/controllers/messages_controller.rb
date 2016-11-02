@@ -2,8 +2,6 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.all
     @message = Message.new
-
-    @message_one = Message.find(5)
   end
 
   def create
