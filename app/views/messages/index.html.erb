@@ -1,8 +1,18 @@
-<%= form_for @message, remote: true do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit 'send' %> 
-<% end %>
+
+<% if user_signed_in? %>
+  <%= form_for @message, remote: true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit 'send' %>
+  <% end %>
+
+
 
 <ul>
   <%= render @messages %>
 </ul>
+
+
+<% else %>
+
+    <h1>you need to log in</h1>
+<% end %>
