@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
    devise_for :users
-   get '/messages' => 'messages#index'
-   post '/messages' => 'messages#create'
-   get 'chat_groups' => 'chatgroups#index' #チャットグループ一覧
-   get 'chat_groups/new' => 'chatgroups#new' 
-   post 'chat_groups' => 'chatgroups#create' 
-   get 'chat_groups/:chat_group_id/edit' => 'chatgroups#edit' #チャットグループ一覧
-   patch 'chat_groups/:chat_group_id' => 'chatgroupd#update'
+   # get '/' => 'chat_groups#index'
+   # get '/messages' => 'messages#index'
+   # post '/messages' => 'messages#create'
+   get 'chat_groups/:chat_group_id/messages' => 'messages#index'
+   post 'chat_groups/:chat_group_id/messages' => 'messages#create'
+   get 'chat_groups' => 'chat_groups#index' #チャットグループ一覧
+   get 'chat_groups/new' => 'chat_groups#new'
+   post 'chat_groups' => 'chat_groups#create'
+   get 'chat_groups/:chat_group_id/edit' => 'chat_groups#edit' #チャットグループ一覧
+   patch 'chat_groups/:chat_group_id' => 'chat_groups#update'
 end

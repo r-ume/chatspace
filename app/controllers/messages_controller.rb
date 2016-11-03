@@ -3,6 +3,8 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.all
     @message = Message.new
+
+    # @message_with_chatgroup_id = Message.where(:)
   end
 
   def create
