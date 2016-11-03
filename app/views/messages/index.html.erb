@@ -1,8 +1,17 @@
-<%= form_for @message, remote: true do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit 'send' %> 
-<% end %>
 
-<ul>
-  <%= render @messages %>
-</ul>
+<% if user_signed_in? %>
+  <%= form_for @message, remote: true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit 'send' %>
+  <% end %>
+
+   <ul>
+    <%= render @messages %>
+   </ul>
+
+    <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+
+<% else %>
+    <h1>you need to log in</h1>
+    <%= link_to "sign in", user_session_path, method: :post %>
+<% end %>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe MessagesController do
-
+  login_user
   describe 'GET #index' do
     it 'renders the :index template' do
       messages = Message.all
@@ -20,6 +20,17 @@ describe MessagesController do
       it 'create a new message' do
         expect(Message.last).to eq message
       end
-    end
-end
+  end
 
+  describe 'whether devise works' do
+    it 'should have a current_user' do
+      #2.11からshouldやshould_notは古くなったそう
+      expect(subject.current_user).not_to be_nil
+    end
+
+    it 'should get index' do
+      get 'index'
+      response.should be_success
+    end
+  end
+end
