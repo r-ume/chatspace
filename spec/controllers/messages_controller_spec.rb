@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe MessagesController do
   login_user
-
   describe 'GET #index' do
     it 'renders the :index template' do
       messages = Message.all
@@ -35,4 +34,3 @@ describe MessagesController do
     end
   end
 end
-

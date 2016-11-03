@@ -1,7 +1,5 @@
 class MessagesController < ApplicationController
-
   before_action :authenticate_user!, only: :index
-
   def index
     @messages = Message.all
     @message = Message.new
@@ -16,5 +14,3 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body)
   end
 end
-
-
