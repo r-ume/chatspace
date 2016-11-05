@@ -28,6 +28,8 @@ gem 'pry-rails'
 gem 'devise'
 
 gem 'haml'
+
+gem 'erb2haml'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

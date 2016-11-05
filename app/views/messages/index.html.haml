@@ -1,0 +1,10 @@
+- if user_signed_in?
+  = form_for @message, :url => {:action => :index}, remote: true do |f|
+    = f.text_field :body
+    = f.submit 'send'
+  %ul
+    = render @messages
+  = link_to "sign out", destroy_user_session_path, method: :delete
+- else
+  %h1 you need to log in
+  = link_to "sign in", user_session_path, method: :post
