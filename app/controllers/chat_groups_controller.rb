@@ -1,5 +1,7 @@
 class ChatGroupsController < ApplicationController
 
+  before_action :set_chat_group, only: [:edit, :update]
+
   # GET/chat_groups
   def index
     @chat_groups = ChatGroup.all
@@ -18,13 +20,14 @@ class ChatGroupsController < ApplicationController
     redirect_to controller: :chat_groups, action: :index
   end
 
-  def update
+  # GET /chat_groups/:chat_groups_id/edit
+  def edit
 
   end
 
-  # GET /chat_groups/:chat_groups_id/edit
-  def edit
-    @existing_chat_group = ChatGroupUser.user
+  def update
+    @chat_group.update(chat_group_params)
+    redirect_to controller: :chat_groups, action: :index
   end
 
   def delete
@@ -34,7 +37,7 @@ class ChatGroupsController < ApplicationController
   private
 
   def set_chat_group
-    @chat_group = ChatGroup.find(params[:id])
+    @chat_group = ChatGroup.find(params[:chat_group_id])
   end
 
   def chat_group_params

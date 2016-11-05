@@ -1,4 +1,13 @@
-<%= @existing_chat_group.each do |f| %>
 
+<h1>chat_group編集ページ</h1>
 
+<!--しっかりどこに飛ばすのか指定してあげれば解決する-->
+<!--:url => {:action => :update}-->
+<%= form_for @chat_group, :url => {:action => :update} do |f| %>
+    <p><%= f.label "Name:" %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.label "Members" %></p>
+    <p><%= f.collection_check_boxes :user_ids, User.all, :id, :name %></p>
+
+    <p><%= f.submit %></p>
 <% end %>
