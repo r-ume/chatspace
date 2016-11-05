@@ -7,4 +7,6 @@ Rails.application.routes.draw do
    post 'chat_groups' => 'chat_groups#create'
    get 'chat_groups/:chat_group_id/edit' => 'chat_groups#edit' #チャットグループ一覧
    patch 'chat_groups/:chat_group_id' => 'chat_groups#update'
+
+   resources :chat_groups, only: [:index, :new, :edit, :create, :update]
 end

@@ -1,0 +1,12 @@
+
+<h1> 新しいchat_groupを作成</h1>
+<%= form_for(@new_chat_group) do |f| %>
+
+    <p><%= f.label "Name" %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.label "Members" %></p>
+    <p><%= f.collection_check_boxes :user_ids, User.all, :id, :name %></p>
+
+    <%= f.submit "create a new group" %>
+
+<% end %>
