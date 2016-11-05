@@ -1,6 +1,5 @@
-
 <% if user_signed_in? %>
-  <%= form_for @message, remote: true do |f| %>
+  <%= form_for @message, :url => {:action => :index}, remote: true do |f| %>
     <%= f.text_field :body %>
     <%= f.submit 'send' %>
   <% end %>

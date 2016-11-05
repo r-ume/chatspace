@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
    devise_for :users
-   # get '/' => 'chat_groups#index'
-   # get '/messages' => 'messages#index'
-   # post '/messages' => 'messages#create'
    get 'chat_groups/:chat_group_id/messages' => 'messages#index'
    post 'chat_groups/:chat_group_id/messages' => 'messages#create'
    get 'chat_groups' => 'chat_groups#index' #チャットグループ一覧
