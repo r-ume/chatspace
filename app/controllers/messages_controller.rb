@@ -14,6 +14,12 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
 
+    # if @message.save
+    #   success: 'Successfully send a message'
+    # else
+    #   warning: 'Unfortunately failed to create'
+    # end
+
     @messages = @chat_group.messages.all
   end
 
