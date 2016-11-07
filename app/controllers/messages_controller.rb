@@ -14,13 +14,13 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_group = @chat_group
     @message.user = current_user
-    @message.save
+    # @message.save
 
-    # if @message.save
-    #   success: 'Successfully send a message'
-    # else
-    #   warning: 'Unfortunately failed to create'
-    # end
+    if @message.save
+      flash.now[:notice] = 'successfully sent'
+    else
+      flash.now[:notice] = 'Unfortunately failed to sent'
+    end
 
     @messages = @chat_group.messages.all
   end
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
   def set_chat_groups
     @chat_groups = ChatGroup.all
   end
-  #
+
   def set_chat_group
     @chat_group = ChatGroup.find(params[:chat_group_id])
   end

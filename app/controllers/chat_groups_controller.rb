@@ -4,7 +4,6 @@ class ChatGroupsController < ApplicationController
   # GET/chat_groups
   def index
     @chat_groups = ChatGroup.all
-    flash[:notice] = "ようこそ。本日は#{Date.today}です。"
   end
 
   # GET /chat_groups/new
