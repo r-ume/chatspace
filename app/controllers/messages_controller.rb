@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :set_chat_groups
   before_action :set_chat_group
+  #CSRF対策を無効にしたい場合に入れるコード
+  skip_before_filter :verify_authenticity_token
 
   def index
     @messages = @chat_group.messages
