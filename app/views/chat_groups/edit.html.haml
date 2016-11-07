@@ -1,0 +1,9 @@
+%h1 chat_group編集ページ
+/ しっかりどこに飛ばすのか指定してあげれば解決する
+/ :url => {:action => :update}
+= form_for @chat_group, :url => {:action => :update} do |f|
+  %p= f.label "Name:"
+  %p= f.text_field :name
+  %p= f.label "Members"
+  %p= f.collection_check_boxes :user_ids, User.all, :id, :name
+  %p= f.submit

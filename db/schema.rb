@@ -13,17 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20161102133716) do
 
-  create_table "chatgroups", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "chatgroupusers", force: :cascade do |t|
+  create_table "chat_group_users", force: :cascade do |t|
     t.integer  "chat_group_id", limit: 4
     t.integer  "user_id",       limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "chat_groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "messages", force: :cascade do |t|
