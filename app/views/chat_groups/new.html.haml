@@ -3,5 +3,11 @@
   %p= f.label "Name"
   %p= f.text_field :name
   %p= f.label "Members"
-  %p= f.collection_check_boxes :user_ids, User.all, :id, :name
+
+  -#ここに検索ワードを入れる
+  %p= text_field_tag :email, '', id: 'user-search-field', placeholder: 'add a new member'
+
+  -#ここに検索結果のワードが出てくる
+  #user-search-result
+
   = f.submit "create a new group"
