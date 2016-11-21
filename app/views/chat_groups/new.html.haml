@@ -5,9 +5,12 @@
   %p= f.label "Members"
 
   -#ここに検索ワードを入れる
-  %p= text_field_tag :email, '', id: 'user-search-field', placeholder: 'add a new member'
+  %p= text_field_tag :name, '', id: 'user-search-field', placeholder: 'add a new member'
 
   -#ここに検索結果のワードが出てくる
   #user-search-result
+
+  %p= f.label "Chat Members"
+
 
   = f.submit "create a new group"

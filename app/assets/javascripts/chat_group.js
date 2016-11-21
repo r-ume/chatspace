@@ -15,7 +15,7 @@ $(function(){
             //jsonのなかで、emailカラムを見ているってことか？（要勉強)
             //idがuser-search-fieldのinputから、取得
             data: {
-                email: $('#user-search-field').val()
+                name: $('#user-search-field').val()
             },
             // jsonファイルなので、jsonを指定
             dataType: 'json'
@@ -43,7 +43,7 @@ $(function(){
     function buildHtml(user) {
         var html =
             '<p>' +
-            user.email +
+            user.name +
             '</p>';
         return html;
     }
