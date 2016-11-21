@@ -2,15 +2,23 @@
 = form_for(@new_chat_group) do |f|
   %p= f.label "Name"
   %p= f.text_field :name
-  %p= f.label "Members"
+
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      %p= f.label "Members"
+    .chat-group-form__field--right
+      .chat-group-form__search.clearfix
 
   -#ここに検索ワードを入れる
-  %p= text_field_tag :name, '', id: 'user-search-field', placeholder: 'add a new member'
+  %p= text_field_tag :name, '', id: 'user-search-field', class: 'chat-group-form__input', placeholder: 'add a new member'
 
   -#ここに検索結果のワードが出てくる
   #user-search-result
 
   %p= f.label "Chat Members"
+  #chat-group-users
 
 
   = f.submit "create a new group"
+
+

@@ -24,7 +24,7 @@ $(function(){
         .done(function(json){
             var insertHtml = '';
             json.forEach(function(user){
-                insertHtml += buildHtml(user);
+                insertHtml += buildAddHtml(user);
             });
             $('#user-search-result').html(insertHtml);
         })
@@ -39,12 +39,30 @@ $(function(){
     // 結果をidがuser-search-fieldに出していく。
     $('#user-search-field').on('change keyup', searchUser);
 
+    // チャットメンバーを追加
+    $('#user-search-result').on('click', function(){
+        var $this = $(this);
+        var id = $this.data('userId');
+        var name = $this.data('userName');
+
+        var insertHTML = buildDeleteHTML(id, name);
+        // フォームにユーザーを追加
+        $('#chat-group-users').append(insertHTML);
+    });
+
     // 今度、userのidをパスしなければならないので、htmlのタグを一気に入れるため、関数か
-    function buildHtml(user) {
+    function buildAddHtml(user) {
         var html =
             '<p>' +
             user.name +
-            '</p>';
+            '</p>' +
+            '<a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="'
+                    + user.id + '" data-user-name="' + user.name + '">追加' +
+            '</a>';
         return html;
     }
+
 });
+
+
+// ---------------------
