@@ -1,24 +1,28 @@
 %h1 新しいchat_groupを作成
-= form_for(@new_chat_group) do |f|
-  %p= f.label "Name"
-  %p= f.text_field :name
+= form_for @new_chat_group do |f|
+  -#分けるためにもクラス追加
+  .chat-group-form
+    %p= f.label 'Name'
+    %p= f.text_field :name
 
-  .chat-group-form__field.clearfix
-    .chat-group-form__field--left
-      %p= f.label "Members"
-    .chat-group-form__field--right
-      .chat-group-form__search.clearfix
+  .chat-group-form
+    = f.label 'Add new Members'
+    %input#user-search-field{ placeholder: '追加したいユーザー名を入力してください' }
+      #user-search-result
 
-  -#ここに検索ワードを入れる
-  %p= text_field_tag :name, '', id: 'user-search-field', class: 'chat-group-form__input', placeholder: 'add a new member'
+  %br
 
-  -#ここに検索結果のワードが出てくる
-  #user-search-result
-
-  %p= f.label "Chat Members"
-  #chat-group-users
-
+  .chat-group-form
+    = f.label 'ChatMembers'
+    #chat-group-users
+      -#userを関連付けさせるため
+      - @new_chat_group.users.each do |user|
+        -#jqueryで、data(userId)で、idを取得できるように
+        .chat-group-user{ id: "chat-group-user-#{user.id}" }
+          %input{ value: user.id }
+          %p= user.name
+          -#hamlの書きかた、覚えるべし
+          %a{ 'data-user-id': user.id } 削除
 
   = f.submit "create a new group"
-
 
