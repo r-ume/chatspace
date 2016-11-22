@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
     '/chat_groups'
   end
 
-  # ------- protected function --------
-  protected
+  # ------- private function --------
+  private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :sign_up, keys: [:name]
   end
