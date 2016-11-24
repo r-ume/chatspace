@@ -3,7 +3,7 @@ class ChatGroupsController < ApplicationController
 
   # GET/chat_groups
   def index
-    @chat_groups = ChatGroup.all
+    @chat_groups = current_user.chat_groups
   end
 
   # GET /chat_groups/new
