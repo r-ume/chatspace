@@ -1,9 +1,21 @@
 - if user_signed_in?
+  %h1
+    = @chat_group.name
+
+  %h4
+    = 'Members:'
+    - @chat_group.users.each do |user|
+      = user.name
+
   = form_for @message, :url => {:action => :index}, remote: true do |f|
     = f.text_field :body
+    = image_tag @message.image.url if @message.image?
+    = f.file_field :image
+    = f.hidden_field :image_cache
     = f.submit 'send'
   %ul
     = render @messages
+
   = link_to "sign out", destroy_user_session_path, method: :delete
 - else
   %h1 you need to log in
