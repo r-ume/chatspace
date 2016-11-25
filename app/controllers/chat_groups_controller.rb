@@ -1,4 +1,5 @@
 class ChatGroupsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_chat_group, only: [:edit, :update]
 
   # GET/chat_groups

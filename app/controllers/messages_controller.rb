@@ -14,7 +14,6 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_group = @chat_group
     @message.user = current_user
-    # @message.save
 
     if @message.save
       flash.now[:notice] = 'successfully sent'
