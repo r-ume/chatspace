@@ -1,4 +1,3 @@
 $("#message_body").val("");
 $("ul").html("<%=j(render @messages) %>");
-//$('.layout-notice').html("<#%=j(flash[:notice]) %>");
 $(".layout-notification").append("<%= j(flash.now[:notice]) %>");

@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :image, :image_cache)
   end
 
   def set_chat_groups
