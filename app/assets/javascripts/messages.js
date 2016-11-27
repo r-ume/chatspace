@@ -8,10 +8,9 @@ $(function(){
         var h = created_at.getHours();
         var mi = created_at.getMinutes();
         var created_at_format = ' ' + y + '年' + m + '月' + d + '日' + h + '時' + mi + '分';
-        var sent_by = ' ' + 'sent by' + ' '+ message.user_name;
-        console.log(message.user_name);
+        var sent_by_who = ' ' + 'sent by' + ' '+ message.user_name;
 
-        var html = $('<li class = "messages">').append(message.body, sent_by, created_at_format);
+        var html = $('<li class = "messages">').append(message.body, sent_by_who, created_at_format);
         return html;
     }
 
@@ -21,11 +20,17 @@ $(function(){
         var textField = $('.js-form__text-field');
         // その中身を取得
         var message = textField.val();
+
         // jsonのurl指定
         // window.location.hrefは、現在のページのurlを取得するもの
         var jsonUrl = window.location.href + '.json';
 
-        // ここからが大事
+        //　フォーム送信（メッセージを送信する場合は)、formDataクラスの初期化が必要。
+        // http://ginpen.com/2013/05/07/jquery-ajax-form/
+        var $form = $(this);
+        var formData = new FormData(document.forms.namedItem("the-form"));
+
+        //ここからが大事
         $.ajax({
             //　新しく作るので、post
             type: 'POST',
@@ -40,14 +45,14 @@ $(function(){
                 }
             },
             dataType: 'json'
-        })
-        .done(function(json){
-            var html = buildHTML(json);
-            $('.messages_list').append(html);
-            textField.val('');
-        })
-        .fail(function(){
-            alert('error');
-        })
+            })
+            .done(function(json){
+                var html = buildHTML(json);
+                $('.messages_list').append(html);
+                textField.val('');
+            })
+            .fail(function(){
+                alert('error');
+            });
     });
 });

@@ -8,7 +8,7 @@
       = user.name
 
   .contents
-    = form_for [@chat_group, @message], html: { class: 'form js-form' } do |f|
+    = form_for [@chat_group, @message], html: { class: 'form js-form', name: 'the-form' } do |f|
       = f.text_field :body, class: 'form__text-field js-form__text-field'
       = f.submit class: 'form__submit js-submit'
 

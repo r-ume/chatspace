@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to :index }
-        format.json { render json: @message }
+        format.json { render json: @message.json_api }
       end
       flash.now[:notice] = 'successfully sent'
     else
