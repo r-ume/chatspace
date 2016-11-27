@@ -11,7 +11,8 @@ class Message < ActiveRecord::Base
     {
         user_name: user.name,
         body: body,
-        created_at: created_at.strftime('%Y/%m/%d %H:%M:%S')
+        created_at: created_at.strftime('%Y/%m/%d %H:%M:%S'),
+        image_url: image.to_s
     }
   end
 end

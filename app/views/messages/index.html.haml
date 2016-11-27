@@ -9,7 +9,8 @@
 
   .contents
     = form_for [@chat_group, @message], html: { class: 'form js-form', name: 'the-form' } do |f|
-      = f.text_field :body, class: 'form__text-field js-form__text-field'
+      = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
+      = f.file_field :image
       = f.submit class: 'form__submit js-submit'
 
     %ul.messages_list
