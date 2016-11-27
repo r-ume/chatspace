@@ -1,4 +1,12 @@
 - if user_signed_in?
+  %h1
+    = @chat_group.name
+
+  %h4
+    = 'Members'
+    - @chat_group.users.each do |user|
+      = user.name
+
   = form_for @message, :url => {:action => :index}, remote: true do |f|
     = f.text_field :body
     = f.submit 'send'
