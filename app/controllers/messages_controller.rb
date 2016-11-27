@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
   def index
     @messages = @chat_group.messages
     @message = Message.new
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @chat_group.messages.includes(:user) }
+    end
   end
 
   def create
@@ -16,6 +21,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
+      respond_to do |format|
+        format.html { redirect_to :index }
+        format.json { render json: @message }
+      end
       flash.now[:notice] = 'successfully sent'
     else
       flash.now[:notice] = 'Unfortunately failed to sent'
