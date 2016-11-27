@@ -13,7 +13,6 @@ $(function(){
         return html;
     }
 
-
     $('.js-form').on('submit', function(e){
         e.preventDefault();
         //まずは、js-form__text-fieldのエリア指定
@@ -48,5 +47,4 @@ $(function(){
             alert('error');
         })
     });
-
 });
