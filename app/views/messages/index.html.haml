@@ -6,18 +6,7 @@
     = 'Members:'
     - @chat_group.users.each do |user|
       = user.name
-<<<<<<< HEAD
 
-  = form_for @message, :url => {:action => :index}, remote: true do |f|
-    = f.text_field :body
-    = image_tag @message.image.url if @message.image?
-    = f.file_field :image
-    = f.hidden_field :image_cache
-    = f.submit 'send'
-  %ul
-    = render @messages
-=======
-      
   .contents
     = form_for [@chat_group, @message], html: { class: 'form js-form' } do |f|
       = f.text_field :body, class: 'form__text-field js-form__text-field'
@@ -25,7 +14,6 @@
 
     %ul.messages_list
       = render @messages
->>>>>>> origin/master
 
   = link_to "sign out", destroy_user_session_path, method: :delete
 

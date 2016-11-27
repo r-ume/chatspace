@@ -5,4 +5,13 @@ class Message < ActiveRecord::Base
   validates :body, presence: true, length: { minimum: 1 }
 
   mount_uploader :image, ImageUploader
+
+  #　この書き方、重要
+  def json_api
+    {
+        user_name: user.name,
+        body: body,
+        time: created_at.strftime('%Y/%m/%d %H:%M:%S')
+    }
+  end
 end

@@ -8,8 +8,10 @@ $(function(){
         var h = created_at.getHours();
         var mi = created_at.getMinutes();
         var created_at_format = ' ' + y + '年' + m + '月' + d + '日' + h + '時' + mi + '分';
+        var sent_by = ' ' + 'sent by' + ' '+ message.user_name;
+        console.log(message.user_name);
 
-        var html = $('<li class = "messages">').append(message.body, created_at_format);
+        var html = $('<li class = "messages">').append(message.body, sent_by, created_at_format);
         return html;
     }
 
@@ -32,14 +34,15 @@ $(function(){
             // ここの書き方重要　よーく復習
             data: {
                 message: {
+                    user_name: message,
                     body: message,
                     created_at: message
                 }
             },
             dataType: 'json'
         })
-        .done(function(data){
-            var html = buildHTML(data);
+        .done(function(json){
+            var html = buildHTML(json);
             $('.messages_list').append(html);
             textField.val('');
         })
