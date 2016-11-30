@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, only: :index
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_chat_groups
   before_action :set_chat_group
   #CSRF対策を無効にしたい場合に入れるコード
