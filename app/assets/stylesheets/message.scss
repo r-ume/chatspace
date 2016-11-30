@@ -1,0 +1,78 @@
+html, body{
+  height: 100%;
+}
+
+header{
+  height: 28px;
+  background-color: #38AEF0;
+}
+
+.header-text{
+  color: white;
+  text-align: center;
+}
+.contents{
+  height: 100%;
+}
+
+.groups{
+  height: 100%;
+  width: 300px;
+  float: left;
+}
+
+.group-user-name{
+  background-color: #253141;
+  height: 96px;
+  padding: 0 20px;
+}
+
+.user-name{
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #FFFFFF;
+  float: left;
+}
+i{
+  margin: 40px 0;
+  float: right;
+}
+
+.groups-names{
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 100%;
+  background-color: #2f3e51;
+}
+
+.group-name{
+  font-size: 15px;
+  color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+.group-messages{
+  color: #FFFFFF;
+  font-size: 11px;
+  padding-bottom: 40px;
+}
+
+.chats{
+  height: 100%;
+  margin-left: 300px;
+}
+
+.chatsgroup-name{
+  height: 96px;
+  border-color: #eeeeee;
+  padding-left: 40px;
+}
+
+.chat-group-name{
+  font-size: 20px;
+  color: #333333;
+  padding-top: 35px;
+  float: left;
+}

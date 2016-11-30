@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   #CSRF対策を無効にしたい場合に入れるコード
   skip_before_filter :verify_authenticity_token
 
+
   def index
     @messages = @chat_group.messages
     @message = Message.new

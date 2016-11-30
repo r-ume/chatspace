@@ -1,6 +1,30 @@
-- if user_signed_in?
-  %h1
-    = @chat_group.name
+%header
+  %p.header-text チャットグループが作成されました。
+
+.contents
+  .groups
+    .group-user-name
+      - if user_signed_in?
+      %p.user-name
+        = @chat_group.name
+
+    .groups-names
+      .group-names
+        - @chat_groups.each do |chat_group|
+          %p.group-name
+            = chat_group.name
+            %p.group-messages 保留
+
+  .chats
+    .chatsgroup-name
+      %p.chat-group-name
+        = @chat_group.name
+      .chat-group-bottom Edit
+
+
+
+
+
 
   %h4
     = 'Members:'
@@ -18,6 +42,6 @@
 
   = link_to "sign out", destroy_user_session_path, method: :delete
 
-- else
-  %h1 you need to log in
-  = link_to "sign in", user_session_path, method: :post
+    -#- else
+    -#    %h1 you need to log in
+    -#    = link_to "sign in", user_session_path, method: :post
