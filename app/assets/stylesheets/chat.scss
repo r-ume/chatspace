@@ -61,49 +61,44 @@
         }
       }
     }
-  }
-  &__post{
-    height: 50px;
-    width: 75%;
-    padding: 20px 40px 20px 40px;
-    position: absolute;
-    bottom: 0px;
-    background-color: #ddd;
-    &__text{
-      line-height: 50px;
-      width: 88%;
-      font-size: 16px;
-      background-color: white;
-      color: #aaaaaa;
-      padding-left: 10px;
-      float: left;
-      display: block;
-      &__icon{
+    &__post {
+      height: 90px;
+      //padding: 20px 40px 20px 40px;
+      padding: 20px 40px 20px 40px;
+      background-color: #ddd;
+      &__text {
+        textarea{
+          height: 50px;
+          line-height: 50px;
+          width: 85%;
+          font-size: 16px;
+          background-color: white;
+          color: #aaaaaa;
+          padding: 20px 0 20px 10px;
+          float: left;
+          display: block;
+          border: none;
+          position: relative;
+        }
+        &__icon {
+          float: right;
+          padding-right: 10px;
+          margin-top: 15px;
+          color: black;
+          display: inline-block;
+          position: absolute;
+          input{
+            display: none;
+          }
+        }
+      }
+      &__button {
+        line-height: 50px;
+        padding: 0px 25px;
+        margin-left: 15px;
+        color: white;
         float: right;
-        padding-right: 10px;
-        margin-top: 15px;
-        color: black;
       }
     }
-    &__button{
-      line-height: 50px;
-      padding: 0px 25px;
-      margin-left: 15px;
-      color: white;
-      float: right;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
 }

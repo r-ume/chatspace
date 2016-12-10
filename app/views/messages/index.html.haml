@@ -32,13 +32,13 @@
       = render @messages
 
     .chat__messages__post
-    = form_for [@chat_group, @message], html: { class: 'form js-form', name: 'the-form' } do |f|
-      = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
-      = f.file_field :image
-      = f.submit class: 'form__submit js-submit'
+      = form_for [@chat_group, @message], html: { class: 'form js-form', name: 'the-form' } do |f|
+        .chat__messages__post__text
+          = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
+          = f.label :image do
+            = f.file_field :image, class: 'chat__messages__post__text__icon'
+          = f.submit "send", class: 'form__submit js-submit chat__messages__post__button'
 
-    -#%ul.messages_list
-    -#  = render @messages
 
   = link_to "sign out", destroy_user_session_path, method: :delete
 
