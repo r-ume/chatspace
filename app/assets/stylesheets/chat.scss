@@ -1,26 +1,27 @@
 .chat{
-  width: 1140px;
-  //float: left;
+  width: 1050px;
+  margin: 0px;
+  float: left;
   &__group{
     border-color: #eeeeee;
     padding-left: 40px;
+    height: 96px;
     &__name{
       font-size: 20px;
       color: #330309;
-      padding-top: 35px;
       float: left;
     }
     &__edit{
       font-size: 20px;
       line-height: 40px;
-      margin-top: 28px;
+      margin-top: 10px;
       margin-right: 40px;
       padding: 0 20px;
-      border: medium solid blue;
+      border: medium solid lightskyblue;
       float: right;
-      color: blue;
+      color: lightskyblue;
     }
-    &_member{
+    &__member{
       font-size: 12px;
       margin-top: 15px;
       padding-bottom: 4px;
