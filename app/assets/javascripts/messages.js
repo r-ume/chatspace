@@ -52,7 +52,7 @@ $(function(){
             })
             .done(function(json){
                 var html = buildHTML(json);
-                $('.messages_list').append(html);
+                $('.chat__messages').append(html);
                 textField.val('');
             })
             .fail(function(){

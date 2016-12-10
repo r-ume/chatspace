@@ -29,4 +29,81 @@
       clear: both;
     }
   }
+  &__messages{
+    background-color: #FAFAFA;
+    padding: 0px;
+    margin-top: 0px;
+    &__contents{
+      height: 100%;
+      padding: 30px 0px 0px 40px;
+      &__box {
+        height: 50px;
+        &__name {
+          font-weight: bold;
+          color: black;
+          font-size: 16px;
+          float: left;
+          margin: 5px;
+        }
+        &__time {
+          font-size: 12px;
+          color: #999999;
+          float: left;
+          margin-top: 9px;
+        }
+      }
+      &__textbox {
+        margin-bottom: 10px;
+        &__text {
+          font-size: 14px;
+          color: black;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  &__post{
+    height: 50px;
+    width: 75%;
+    padding: 20px 40px 20px 40px;
+    position: absolute;
+    bottom: 0px;
+    background-color: #ddd;
+    &__text{
+      line-height: 50px;
+      width: 88%;
+      font-size: 16px;
+      background-color: white;
+      color: #aaaaaa;
+      padding-left: 10px;
+      float: left;
+      display: block;
+      &__icon{
+        float: right;
+        padding-right: 10px;
+        margin-top: 15px;
+        color: black;
+      }
+    }
+    &__button{
+      line-height: 50px;
+      padding: 0px 25px;
+      margin-left: 15px;
+      color: white;
+      float: right;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
 }
