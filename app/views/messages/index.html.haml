@@ -1,34 +1,30 @@
-%header
-  %p.header-text チャットグループが作成されました。
+-#%header
+-#  %p.header-text チャットグループが作成されました。
+
+.flash__message
+  %p.flash__message__text チャットグループが作成されました。
 
 .contents
-  .groups
-    .group-user-name
+  .group
+    .group__user
       - if user_signed_in?
-      %p.user-name
+      %p.group__user__name
         = @chat_group.name
 
-    .groups-names
-      .group-names
+    .group__contents
+      .group__contents__box
         - @chat_groups.each do |chat_group|
-          %p.group-name
+          %p.group__contents__box__name
             = chat_group.name
-            %p.group-messages 保留
+            %p.group__contents__box__message 最初のメッセージ
 
-  .chats
-    .chatsgroup-name
-      %p.chat-group-name
+  .chat
+    .chat__group
+      %p.chat__group__name
         = @chat_group.name
-      .chat-group-bottom Edit
-
-
-
-
-
-
-  %h4
-    = 'Members:'
+      .chat__group__edit Edit
     - @chat_group.users.each do |user|
+      %p.chat__group__member
       = user.name
 
   .contents

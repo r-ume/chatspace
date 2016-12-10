@@ -1,0 +1,31 @@
+.chat{
+  width: 1140px;
+  //float: left;
+  &__group{
+    border-color: #eeeeee;
+    padding-left: 40px;
+    &__name{
+      font-size: 20px;
+      color: #330309;
+      padding-top: 35px;
+      float: left;
+    }
+    &__edit{
+      font-size: 20px;
+      line-height: 40px;
+      margin-top: 28px;
+      margin-right: 40px;
+      padding: 0 20px;
+      border: medium solid blue;
+      float: right;
+      color: blue;
+    }
+    &_member{
+      font-size: 12px;
+      margin-top: 15px;
+      padding-bottom: 4px;
+      color: #999999;
+      clear: both;
+    }
+  }
+}
