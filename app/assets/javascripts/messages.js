@@ -9,7 +9,7 @@ $(function(){
         var mi = created_at.getMinutes();
         var created_at_format = ' ' + y + '年' + m + '月' + d + '日' + h + '時' + mi + '分';
         var sent_by_who = ' ' + 'sent by' + ' '+ message.user_name;
-        var image = '"<img src ="' + message.image_url + '">';
+        var image = '<img src =' + message.image + '>';
         console.log(image);
 
         var html = $('<li class = "messages">').append(message.body, sent_by_who, created_at_format, image);

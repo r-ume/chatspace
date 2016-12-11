@@ -11,6 +11,7 @@
     = form_for @message, url: { action: :create }, html: { class: 'form js-form-message', name: 'the-form' } do |f|
       = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
       = f.file_field :image
+      = f.hidden_field :user_id, value: current_user.id
       = f.submit class: 'form__submit js-submit'
 
     %ul.messages_list
