@@ -17,39 +17,44 @@ $(function(){
         return html;
     }
 
-    $('.js-form').on('submit', function(e){
+    $('.js-form-message').on('submit', function(e){
         e.preventDefault();
         //まずは、js-form__text-fieldのエリア指定
         var textField = $('.js-form__text-field');
         // その中身を取得
-        var message = textField.val();
+        // var message = textField.val();
 
         // jsonのurl指定
         // window.location.hrefは、現在のページのurlを取得するもの
-        var jsonUrl = window.location.href + '.json';
+        var jsonUrl = window.location.href;
 
         //　フォーム送信（メッセージを送信する場合は)、formDataクラスの初期化が必要。
         // http://ginpen.com/2013/05/07/jquery-ajax-form/
-        var $form = $(this);
-        var formData = new FormData(document.forms.namedItem("the-form"));
+        var message = new FormData($(this).get(0));
+        // var $form = $(this);
+        // var message = new FormData(document.forms.namedItem("the-form"));
 
         //ここからが大事
         $.ajax({
             //　新しく作るので、post
             type: 'POST',
             // urlは、上で定義したもの
+            // 上のpostやgetで動くurlを指定する
             url: jsonUrl,
             // ここの書き方重要　よーく復習
-            data: {
-                message: {
-                    user_name: message,
-                    body: message,
-                    created_at: message,
-                    image_url: message
-                }
-            },
-            dataType: 'json'
-            })
+            data: message,
+            // data: {
+            //     message: {
+            //         user_name: message,
+            //         body: message,
+            //         created_at: message,
+            //         image_url: message
+            //     }
+            // },
+            dataType: 'json',
+            processData: false,
+            contentType: false
+        })
             .done(function(json){
                 var html = buildHTML(json);
                 $('.messages_list').append(html);
