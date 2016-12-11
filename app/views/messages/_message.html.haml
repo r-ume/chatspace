@@ -1,3 +1,6 @@
 %li.messages
   = message.body
+  = 'sent by ' + message.user.name
   = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  %p
+  = image_tag "#{message.image}" if message.image
