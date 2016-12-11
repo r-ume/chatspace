@@ -1,20 +1,28 @@
 //まだまだまだまだjQueryを書くのが慣れないので、chatspaceが完成するまで、コメントを残しておく。
 $(function(){
-    function buildHTML(message){
-        var created_at = new Date(message.created_at);
+    function buildHTML(data){
+        var created_at = new Date(data.time);
         var y = created_at.getFullYear();
         var m = created_at.getMonth() + 1;
         var d = created_at.getDate();
         var h = created_at.getHours();
         var mi = created_at.getMinutes();
         var created_at_format = ' ' + y + '年' + m + '月' + d + '日' + h + '時' + mi + '分';
-        var sent_by_who = ' ' + 'sent by' + ' '+ message.user_name;
+
+        var sent_by_who = ' ' + 'sent by' + ' '+ data.name;
         console.log(sent_by_who);
-        var image = '<img src =' + message.image + '>';
+
+        var image = '<img src =' + data.image + '>';
         console.log(image);
 
-        var html = $('<li class = "messages">').append(message.body, sent_by_who, created_at_format, image);
+        if(data.image){
+            var html = $('<li class = "messages">').append(data.body, sent_by_who, created_at_format, image);
+        } else{
+            var html = $('<li class = "messages">').append(data.body, sent_by_who, created_at_format);
+        }
+
         console.log(html);
+
         return html;
     }
 
@@ -22,6 +30,7 @@ $(function(){
         e.preventDefault();
         //まずは、js-form__text-fieldのエリア指定
         var textField = $('.js-form__text-field');
+        var imageField = $('.form_image_field');
         // その中身を取得
         // var message = textField.val();
 
@@ -56,10 +65,11 @@ $(function(){
             processData: false,
             contentType: false
         })
-            .done(function(json){
-                var html = buildHTML(json);
+            .done(function(data){
+                var html = buildHTML(data);
                 $('.messages_list').append(html);
                 textField.val('');
+                imageField.val('');
             })
             .fail(function(){
                 alert('error');
