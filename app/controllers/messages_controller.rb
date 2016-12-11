@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
+  before_action :authenticate_user!, only: %i(index create)
   before_action :set_chat_groups
   before_action :set_chat_group
   #CSRF対策を無効にしたい場合に入れるコード
@@ -24,8 +24,8 @@ class MessagesController < ApplicationController
 
     if @message.save
       respond_to do |format|
-        format.html { redirect_to :index }
-        format.json { render json: @message.json_api }
+        format.html { redirect_to index }
+        format.json { render json: { name: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url } }
       end
       flash.now[:notice] = 'successfully sent'
     else
@@ -37,7 +37,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:body, :image)
+    params.require(:message).permit(:body, :image).merge(user_id: current_user.id)
   end
 
   def set_chat_groups

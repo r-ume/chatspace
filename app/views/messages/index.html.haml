@@ -32,11 +32,12 @@
       = render @messages
 
     .chat__messages__post
-      = form_for [@chat_group, @message], html: { class: 'form js-form', name: 'the-form' } do |f|
+      = form_for @message, url: { action: :create }, html: { class: 'form js-form-message', name: 'the-form' } do |f|
         .chat__messages__post__text
           = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
           = f.label :image do
-            = f.file_field :image, class: 'chat__messages__post__text__icon'
+            = f.file_field :image, class: 'chat__messages__post__text__icon form_image_field'
+          = f.hidden_field :user_id, value: current_user.id
           = f.submit "send", class: 'form__submit js-submit chat__messages__post__button'
 
 
