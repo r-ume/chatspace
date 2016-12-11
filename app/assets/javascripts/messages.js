@@ -9,6 +9,7 @@ $(function(){
         var mi = created_at.getMinutes();
         var created_at_format = ' ' + y + '年' + m + '月' + d + '日' + h + '時' + mi + '分';
         var sent_by_who = ' ' + 'sent by' + ' '+ message.user_name;
+        console.log(sent_by_who);
         var image = '<img src =' + message.image + '>';
         console.log(image);
 
