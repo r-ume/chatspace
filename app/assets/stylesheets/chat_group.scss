@@ -1,35 +1,80 @@
-.group {
-  width: 300px;
-  float: left;
-  &__user {
-    background-color: #253141;
-    height: 96px;
-    padding: 0 20px;
-    &__name{
-      font-size: 20px;
-      color: white;
-      padding-top: 20px;
+.chat-group{
+  &-form{
+    width: 980px;
+    //height: 500px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    h1{
+      letter-spacing: 2px;
+      font-size: 24px;
+      text-align: center;
+    }
+    &_action-button{
+      display: inline-block;
+      padding: 12px 20px;
+      color: #fff;
+      background-color: deepskyblue;
+      border: 0;
+    }
+    &__field{
+      margin-top: 30px;
+      height: 55px;
+
+      &--left{
+        float: left;
+        width: 230px;
+        height: 50px;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      &--right{
+        float: right;
+        width: 65%;
+      }
+    }
+    &__label{
+      //display: block;
+      line-height: 50px;
+      font-weight: bold;
+      text-align: right;
+    }
+    &__input{
       float: left;
+      width: 100%;
+      line-height: 30px;
+      padding: 10px 15px;
+      box-sizing: border-box;
     }
   }
-  &__contents {
-    padding: 0px 30px;
-    height: 100%;
-    background-color: #2f3e51;
-    &__box{
-      &__name{
-        margin: 0;
-        font-size: 15px;
-        padding-top: 20px;
-        padding-bottom: 5px;
-        color: white;
+
+  &--user{
+    padding: 0 15px 10px 15px;
+    line-height: 50px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+
+
+    &__name{
+      float: left;
+      padding-left: 15px;
+    }
+
+    &__button{
+      float: right;
+      display: inline-block;
+      cursor: pointer;
+
+      &--add{
+        color: deepskyblue;
       }
-      &__message{
-        font-size: 11px;
-        padding-bottom: 20px;
-        color:white
+
+      &--remove{
+        color: #f05050;
       }
     }
   }
 }
-
