@@ -21,7 +21,7 @@ html {
     }
     &__header {
       h2 {
-        margin-top: 0px;
+        margin-top: 0;
         margin-bottom: 10px;
         letter-spacing: 3px;
         font-size: 40px;
@@ -35,26 +35,26 @@ html {
         }
       }
       h5 {
-        margin-top: 0px;
+        margin-top: 0;
         margin-bottom: 20px;
         font-size: 14px;
         font-weight: 200;
       }
       .sign-up-button {
-        //height: 50px;なぜか適応されない
-        //width: 60px;なぜか適応されない
-        margin-top: 20px;
-        padding: 0 30px;
+        //なぜか適応されない
+        margin-top: 50px;
+        padding: 15px 30px;
         color: #fff;
         background-color: #ccc;
         font-size: 14px;
+        text-decoration: none;
       }
     }
 
     .field {
       margin-bottom: 10px;
 
-      .field_label {
+      .field-label {
         padding: 10px 0;
         letter-spacing: 1px;
         font-size: 14px;
@@ -72,6 +72,21 @@ html {
           letter-spacing: 1px;
         }
       }
+    }
+
+    .login-button{
+      display: inline-block;
+      height: 50px;
+      margin-top: 30px;
+      padding: 0 30px;
+      line-height: 50px;
+      letter-spacing: 1px;
+      text-align: center;
+      border: none;
+      border-radius: 2px;
+      color: white;
+      background-color: deepskyblue;
+      font-size: 14px;
     }
 
   }
