@@ -1,0 +1,78 @@
+html {
+  background-color: #fafafa;
+  .account-page {
+    &__inner {
+      width: 858px;
+      height: 268px;
+      margin: 60px auto;
+      padding: 60px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      &--left, &--right {
+        float: left;
+        width: 50%;
+      }
+      &:after {
+        clear: both;
+        content: "";
+        display: block;
+      }
+    }
+    &__header {
+      h2 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+        font-size: 40px;
+        font-weight: 200;
+        &:after {
+          content: '';
+          display: block;
+          width: 60px;
+          margin-top: 5px;
+          border-bottom: 1px solid skyblue;
+        }
+      }
+      h5 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 200;
+      }
+      .sign-up-button {
+        //height: 50px;なぜか適応されない
+        //width: 60px;なぜか適応されない
+        margin-top: 20px;
+        padding: 0 30px;
+        color: #fff;
+        background-color: #ccc;
+        font-size: 14px;
+      }
+    }
+
+    .field {
+      margin-bottom: 10px;
+
+      .field_label {
+        padding: 10px 0;
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: 200;
+
+        i {
+          font-size: 11px;
+        }
+      }
+
+      .field-input {
+        input {
+          width: 100%;
+          padding: 10px;
+          letter-spacing: 1px;
+        }
+      }
+    }
+
+  }
+}
