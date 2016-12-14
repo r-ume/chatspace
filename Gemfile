@@ -26,13 +26,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pry-rails'
 
 gem 'devise'
-
+#haml導入
 gem 'haml'
-
+#erbからhamlに変換するgem
 gem 'erb2haml'
-
 #画像投稿のため
 gem 'carrierwave'
+#font-awesome導入
+gem 'font-awesome-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
