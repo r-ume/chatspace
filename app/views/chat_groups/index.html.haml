@@ -1,14 +1,11 @@
-- if user_signed_in?
-  %p= link_to 'sign_out', destroy_user_session_path, :method => :delete
+.chat
+  = render partial: "chat_groups/left"
+  = render partial: "chat_groups/right" if controller.controller_name == "messages/message"
 
-- @chat_groups.each do |chat_group|
-  %p= link_to chat_group.name, edit_chat_group_path(chat_group)
 
-.chat-side
-  .chat-user.clearfix
-    %h5= current_user.name
-    .chat-user__actions
-      = link_to new_chat_group_path, class: "chat-user__action" do
-        %i.fa.fa-pencil-square-o
-      = link_to edit_user_path(current_user), class: "chat-user__action" do
-        %i.fa.fa-cog
+  -#- if user_signed_in?
+-#  %p= link_to 'sign_out', destroy_user_session_path, :method => :delete
+-#
+-#- @chat_groups.each do |chat_group|
+-#  %p= link_to chat_group.name, edit_chat_group_path(chat_group)
+

@@ -1,48 +1,49 @@
 -#%header
 -#  %p.header-text チャットグループが作成されました。
 
-.flash__message
-%p.flash__message__text チャットグループが作成されました。
-
-.contents
-.group
-  .group__user
-    - if user_signed_in?
-    %p.group__user__name
-      = @chat_group.name
-
-  .group__contents
-    .group__contents__box
-      - @chat_groups.each do |chat_group|
-        %p.group__contents__box__name
-          = chat_group.name
-          %p.group__contents__box__message 最後のメッセージ
-
 .chat
-  .chat__group
-    %p.chat__group__name
-      = @chat_group.name
-    .chat__group__edit Edit
-    .chat__group__member
-      Member:
-      - @chat_group.users.each do |user|
-        = user.name
+  = render partial: "chat_groups/left"
+  = render partial: "chat_groups/right"
 
-  .chat__messages
-    = render @messages
-
-  .chat__messages__post
-    = form_for @message, url: { action: :create }, html: { class: 'form js-form-message', name: 'the-form' } do |f|
-      .chat__messages__post__text
-        = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
-        = f.label :image do
-          = f.file_field :image, class: 'chat__messages__post__text__icon form_image_field'
-        = f.hidden_field :user_id, value: current_user.id
-        = f.submit "send", class: 'form__submit js-submit chat__messages__post__button'
+-#.flash__message
+-#%p.flash__message__text チャットグループが作成されました。
+-#
+-#.contents
+-#.group
+-#  .group__user
+-#    - if user_signed_in?
+-#    %p.group__user__name
+-#      = @chat_group.name
+-#
+-#  .group__contents
+-#    .group__contents__box
+-#      - @chat_groups.each do |chat_group|
+-#        %p.group__contents__box__name
+-#          = chat_group.name
+-#          %p.group__contents__box__message 最後のメッセージ
+-#
+-#.chat
+-#  .chat__group
+-#    %p.chat__group__name
+-#      = @chat_group.name
+-#    .chat__group__edit Edit
+-#    .chat__group__member
+-#      Member:
+-#      - @chat_group.users.each do |user|
+-#        = user.name
+-#
+-#  .chat__messages
+-#    = render @messages
+-#
+-#  .chat__messages__post
+-#    = form_for @message, url: { action: :create }, html: { class: 'form js-form-message', name: 'the-form' } do |f|
+-#      .chat__messages__post__text
+-#        = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
+-#        = f.label :image do
+-#          = f.file_field :image, class: 'chat__messages__post__text__icon form_image_field'
+-#        = f.hidden_field :user_id, value: current_user.id
+-#        = f.submit "send", class: 'form__submit js-submit chat__messages__post__button'
 
 
 = link_to "sign out", destroy_user_session_path, method: :delete
 
-  -#- else
-  -#    %h1 you need to log in
-  -#    = link_to "sign in", user_session_path, method: :post
