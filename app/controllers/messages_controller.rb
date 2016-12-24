@@ -24,8 +24,13 @@ class MessagesController < ApplicationController
 
     if @message.save
       respond_to do |format|
-        format.html { redirect_to index }
-        format.json { render json: { name: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url } }
+        format.html do
+          redirect_to chat_group_messages_path(@chat_group)
+        end
+
+        format.json do
+          render json: { name: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url }
+        end
       end
       flash.now[:notice] = 'successfully sent'
     else
