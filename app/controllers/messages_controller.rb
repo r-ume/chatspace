@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
 
 
   def index
+    @chat_groups = current_user.chat_groups
     @messages = @chat_group.messages
     @message = Message.new
 
@@ -15,6 +16,7 @@ class MessagesController < ApplicationController
       # mapメソッドで、userの名前を取得
       format.json { render json: @chat_group.messages.includes(:user).map{|x| x.json_api} }
     end
+
   end
 
   def create
