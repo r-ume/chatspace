@@ -1,15 +1,16 @@
 .chat {
   min-width: 980px;
-  height: 100%;
+  height: 100vh;
+  .chat-side {
+    height: 100%;
+    float: left;
+    width: 300px;
+    background-color: #2f3e51;
+  }
 }
-.chat-side {
-  float: left;
-  width: 300px;
-  height: 100%;
-  background-color: #2f3e51;
-}
+
 .chat-user {
-  height: 100px;
+  height: 80px;
   padding: 20px;
   background-color: #253141;
   color: #fff;
@@ -80,7 +81,6 @@
       font-weight: 400;
     }
   }
-  //後ほど追加
   &--right {
     float: right;
   }
@@ -107,10 +107,11 @@
 }
 
 .chat-body {
+  overflow: scroll;
   position: relative;
   padding: 30px 0;
-  height: calc(100% - 190px);
-  overflow: scroll;
+  //height: 500px;
+  height: calc(100% - 250px);
 }
 
 .chat-messages{
@@ -146,7 +147,7 @@
 }
 
 .chat-footer{
-  //position: absolute;
+  position: absolute;
   height: 50px;
   right: 0;
   left: 0;
@@ -156,7 +157,6 @@
   &__body {
     float: left;
     width: calc(100% - 115px);
-    //height: 20px;
     position: relative;
     textarea{
       width: 100%;
