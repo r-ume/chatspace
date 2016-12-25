@@ -3,8 +3,32 @@
     width: 100%;
 }
 
-body, html{
-    margin: 0;
+html, body{
     padding: 0;
     height: 100%;
+}
+
+body{
+    margin: 0;
+}
+
+.layout-notice{
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background-color: deepskyblue;
+    text-align: center;
+    font-weight: 200;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.layout-alert{
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background-color: red;
+    font-weight: 200;
+    text-align: center;
+    margin: 0;
 }
