@@ -3,7 +3,7 @@ $(function(){
     function usersSearchForJoin(data){
         var html =
             "<div class = 'chat-group-user clearfix'>" +
-            "<input name = 'chat-group[user_ids][]' type='hidden'>" +
+            "<input name = 'chat_group[user_ids][]' type='hidden'>" +
             "<p class = 'chat-group-user__name'>" + data.name + "</p>" +
             "<a style = 'color: deepskyblue;' id = 'add-user-button' " +
                 "class = 'user-search-add chat-group-user__button chat-group-user__button-add' data-user-id='" +
@@ -19,7 +19,7 @@ $(function(){
         console.log(user_id);
         var html =
             "<div class = 'chat-group-user clearfix'>" +
-            "<input name = 'group[user_ids][]' value =" +  user_id + " type = 'hidden' id = 'chat-group-ids'>" +
+            "<input name = 'chat_group[user_ids][]' value =" +  user_id + " type = 'hidden' id = 'chat-group-ids'>" +
             "<p class = 'chat-group-user__name'>" + user_name + "</p>" +
             "<a style = 'color: red;' id = 'delete-user-button' " +
                 "class = 'user-search-add chat-group-user__button chat-group-user__button--add delete-user' data-user-id='" + user_id +
