@@ -102,10 +102,9 @@ $(function(){
                    $('ul.chat-messages').html(html);
                })
                .fail(function(){
-                   alert('自動更新失敗');
-               })
+                   // alert('自動更新失敗');
+               });
         //    10秒ごとに自動更新
         }, 10 * 1000);
     }
 });
-

@@ -31,7 +31,6 @@ class ChatGroupsController < ApplicationController
 
   def update
     if @chat_group.update(chat_group_params)
-      # binding.pry
       flash[:notice] = 'グループ編集成功'
       redirect_to chat_group_messages_path(@chat_group)
     else
