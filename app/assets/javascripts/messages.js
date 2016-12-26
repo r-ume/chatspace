@@ -49,14 +49,25 @@ $(function(){
         })
             .done(function(data){
                 var html = buildHTML(data);
-                $('.messages_list').append(html);
+                $('.chat__messages').append(html);
                 //　本文を送信したあと、textFieldに本文が残っているので、textfieldを空にする。
                 textField.val('');
                 // 画像を送信したあと、textFieldに画像が残っているので、imageFieldを空にする。
                 imageField.val('');
+                scrollToBottom();
+
             })
             .fail(function(){
                 alert('error');
             });
     });
+
+
+    scrollToBottom();
+
+    // 自動スクロール
+    function scrollToBottom() {
+        $('.chat-body').scrollTop( $('.chat-messages').height() );
+    }
 });
+

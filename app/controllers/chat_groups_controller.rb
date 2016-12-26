@@ -21,6 +21,7 @@ class ChatGroupsController < ApplicationController
 
   # GET /chat_groups/:chat_groups_id/edit
   def edit
+    @chat_group_users = @chat_group.users
   end
 
   def update

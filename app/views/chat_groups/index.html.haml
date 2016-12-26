@@ -1,6 +1,4 @@
-- if user_signed_in?
-  %p= link_to 'sign_out', destroy_user_session_path, :method => :delete
-
-- @chat_groups.each do |chat_group|
-  %p= link_to chat_group.name, edit_chat_group_path(chat_group)
-
+.layout-notification
+  .chat
+    = render partial: "chat_groups/left"
+    = render partial: "chat_groups/right" if controller.controller_name == "messages/message"

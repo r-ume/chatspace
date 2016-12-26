@@ -1,9 +1,31 @@
-%h1 chat_group編集ページ
-/ しっかりどこに飛ばすのか指定してあげれば解決する
-/ :url => {:action => :update}
-= form_for @chat_group, :url => {:action => :update} do |f|
-  %p= f.label "Name:"
-  %p= f.text_field :name
-  %p= f.label "Members"
-  %p= f.collection_check_boxes :user_ids, User.all, :id, :name
-  %p= f.submit
+.chat-group-form
+  %h1 チャットグループ編集
+  #edit_chat_group.edit_chat_group
+    = form_for @chat_group do |f|
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          = f.label :name, "グループ名", class: "chat-group-form__label"
+
+        .chat-group-form__field--right
+          #chat_group_name
+            = f.text_field :name, value: @chat_group.name, placeholder: "グループ名を入力してください", class: "chat-group-form__input"
+
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          .chat-group-form__label チャットメンバーを追加
+        .chat-group-form__field--right
+          .chat-group-form__search.clearfix
+            %input#user-search-field.chat-group-form__input{ placeholder: "追加したいユーザー名を入力してください" }
+
+          #user-search-result
+
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          .chat-group-form__label チャットメンバー
+        .chat-group-form__field--right
+          #chat-group-users
+            = render partial: "chat_groups/user_list", collection: @chat_group_users
+
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--right
+          = f.submit "save", class: "chat-group-form__action-button"

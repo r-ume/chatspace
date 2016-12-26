@@ -1,24 +1,3 @@
-- if user_signed_in?
-  %h1
-    = @chat_group.name
-
-  %h4
-    = 'Members:'
-    - @chat_group.users.each do |user|
-      = user.name
-
-  .contents
-    = form_for @message, url: { action: :create }, html: { class: 'form js-form-message', name: 'the-form' } do |f|
-      = f.text_area :body, class: 'form__text-field js-form__text-field', placeholder: 'message'
-      = f.file_field :image, class: 'form_image_field'
-      = f.hidden_field :user_id, value: current_user.id
-      = f.submit class: 'form__submit js-submit'
-
-    %ul.messages_list
-      = render @messages
-
-  = link_to "sign out", destroy_user_session_path, method: :delete
-
-- else
-  %h1 you need to log in
-  = link_to "sign in", user_session_path, method: :post
+.chat
+  = render partial: "chat_groups/left"
+  = render partial: "chat_groups/right"

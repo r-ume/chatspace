@@ -5,7 +5,9 @@ class MessagesController < ApplicationController
   #CSRF対策を無効にしたい場合に入れるコード
   skip_before_filter :verify_authenticity_token
 
+
   def index
+    @chat_groups = current_user.chat_groups
     @messages = @chat_group.messages
     @message = Message.new
 
@@ -14,6 +16,7 @@ class MessagesController < ApplicationController
       # mapメソッドで、userの名前を取得
       format.json { render json: @chat_group.messages.includes(:user).map{|x| x.json_api} }
     end
+
   end
 
   def create
@@ -23,8 +26,13 @@ class MessagesController < ApplicationController
 
     if @message.save
       respond_to do |format|
-        format.html { redirect_to :index }
-        format.json { render json: { name: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url } }
+        format.html do
+          redirect_to chat_group_messages_path(@chat_group)
+        end
+
+        format.json do
+          render json: { name: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url }
+        end
       end
       flash.now[:notice] = 'successfully sent'
     else

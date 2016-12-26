@@ -1,0 +1,26 @@
+.chat-main
+  .chat-header.clearfix
+    .chat-header--left
+      %h2= @chat_group.name
+      %p.chat-header__users
+        Members:
+        - @chat_group.users.each do |user|
+          %span.chat-header__user= user.name
+
+    .chat-header--right
+      = link_to "Edit", edit_chat_group_path(@chat_group), class: "chat-header__edit-button"
+
+  .chat-body
+    %ul.chat-messages
+      = render partial: "messages/message", collection: @messages
+
+  .chat-footer
+    = form_for @message, url: { action: :create }, class: "new_message" do |f|
+      .chat-footer__body
+        = f.text_area :body, placeholder: "type a message", row: "1"
+        = f.label :image, class: "chat-footer__file" do
+          = f.file_field :image, class: "chat-image"
+          %i.fa.fa-image
+        = f.hidden_field :user_id, value: current_user.id
+
+      = f.submit "Send", id: "send_button"

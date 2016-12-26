@@ -1,28 +1,39 @@
-%h1 新しいchat_groupを作成
-= form_for @new_chat_group do |f|
-  -#分けるためにもクラス追加
-  .chat-group-form
-    %p= f.label 'Name'
-    %p= f.text_field :name
+.chat-group-form
+  %h1 新規チャットグループ
+  = form_for @new_chat_group do |f|
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--left
+        .chat-group-form__label
+          = f.label :name, 'グループ名'
+      .chat-group-form__field--right
+        #chat_group_name
+          = f.text_field :name, placeholder: "グループ名を入力してください", class: 'chat-group-form__input'
 
-  .chat-group-form
-    = f.label 'Add new Members'
-    %input#user-search-field{ placeholder: '追加したいユーザー名を入力してください' }
-      #user-search-result
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--left
+        .chat-group-form__label Add new Members
 
-  %br
+      .chat-group-form__field--right
+        .chat-group-form__search.clearfix
+          %input#user-search-field.chat-group-form__input{ placeholder: '追加したいユーザー名を入力してください' }
+            #user-search-result
 
-  .chat-group-form
-    = f.label 'ChatMembers'
-    #chat-group-users
-      -#userを関連付けさせるため
-      - @new_chat_group.users.each do |user|
-        -#jqueryで、data(userId)で、idを取得できるように
-        .chat-group-user{ id: "chat-group-user-#{user.id}" }
-          %input{ value: user.id }
-          %p= user.name
-          -#hamlの書きかた、覚えるべし
-          %a{ 'data-user-id': user.id } 削除
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--left
+        .chat-group-form__label
+          = f.label 'ChatMembers'
+      .chat-group-form__field--right
+        #chat-group-users
+          .chat-group--user.chat-group-user__name
+            = current_user.name
+            = f.hidden_field :user_ids, value: current_user.id, multiple: true
+          - @new_chat_group.users.each do |user|
+            .chat-group-user{ id: "chat-group-user-#{user.id}" }
+              %input{ value: user.id }
+              %p= user.name
+              -#hamlの書きかた、覚えるべし
+              %a{ 'data-user-id': user.id } 削除
 
-  = f.submit "create a new group"
-
+    .chat-group-form__field.clearfix
+      .chat-group-form__field--right
+        = f.submit "Save", class: "chat-group-form_action-button"
