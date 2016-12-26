@@ -1,22 +1,22 @@
 //まだまだまだまだjQueryを書くのが慣れないので、chatspaceが完成するまで、コメントを残しておく。
 $(function(){
-    function buildHTML(data){
-        var created_at = new Date(data.time);
-        var y = created_at.getFullYear();
-        var m = created_at.getMonth() + 1;
-        var d = created_at.getDate();
-        var h = created_at.getHours();
-        var mi = created_at.getMinutes();
-        var created_at_format = ' ' + y + '年' + m + '月' + d + '日' + h + '時' + mi + '分';
-        var sent_by_who = ' ' + 'sent by' + ' '+ data.name;
-        var image = '<img src =' + data.image + '>';
+    function new_message(data) {
+        var new_message =
+            "<li class = 'chat-message'>" +
+            "<div class = 'chat-message__header clearfix'>" +
+            "<p class = 'chat-message__name'>" + data.user + "</p>" +
+            "<p class = 'chat-message__time'>" + data.time + "</p>" + "</div>" +
+            "<p class = 'chat-message__body'>" + data.body + "</p>";
+
         if(data.image){
-            var html = $('<li class = "messages">').append(data.body, sent_by_who, created_at_format, image);
+            new_message += "<img class = 'chat-message__image' src='" + data.image + "'></li>";
         } else{
-            var html = $('<li class = "messages">').append(data.body, sent_by_who, created_at_format);
+            new_message += "</li>";
         }
-        return html;
+        return new_message;
+        // $('.chat-messages').append(new_message);
     }
+
 
     $('.js-form-message').on('submit', function(e){
         e.preventDefault();
@@ -48,7 +48,7 @@ $(function(){
             contentType: false
         })
             .done(function(data){
-                var html = buildHTML(data);
+                var html = new_message(data);
                 $('.chat__messages').append(html);
                 //　本文を送信したあと、textFieldに本文が残っているので、textfieldを空にする。
                 textField.val('');
@@ -68,6 +68,44 @@ $(function(){
     // 自動スクロール
     function scrollToBottom() {
         $('.chat-body').scrollTop( $('.chat-messages').height() );
+    }
+
+    // 自動更新のために、メッセージのAPIのURLを取得
+    var jsonUrlForAutoReload = window.location.href;
+
+    // 自動更新用のURLにchat_groupsとmessageが含まれているかをチェック
+    function isJsonUrlForAutoReload(url){
+       if (url.indexOf(/\/chat_groups\/d+\/messages/)){
+           console.log('true');
+           return true;
+       } else {
+           console.log('false');
+           return false;
+       }
+    }
+
+    // もし、chat_groups/:group_id/messagesのurlだったら、（メッセージ画面だったら、)、自動更新を行う
+    if(isJsonUrlForAutoReload(jsonUrlForAutoReload)){
+        setInterval(function(){
+           $.ajax({
+               method: 'GET',
+               url: jsonUrlForAutoReload,
+               dataType: 'json'
+           })
+               .done(function(data){
+                   var html = '';
+                   // forEach関数で、配列を一つ一つ処理
+                   data.forEach(function(message_new){
+                       html = new_message(message_new);
+                   });
+                   // html関数は、指定した要素を書き換える removeとappendを一緒にする関数
+                   $('ul.chat-messages').html(html);
+               })
+               .fail(function(){
+                   alert('自動更新失敗');
+               })
+        //    10秒ごとに自動更新
+        }, 10 * 1000);
     }
 });
 
