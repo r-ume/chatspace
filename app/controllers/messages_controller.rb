@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
         end
 
         format.json do
-          render json: { name: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url }
+          render json: { user: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url }
         end
       end
       flash.now[:notice] = 'successfully sent'
