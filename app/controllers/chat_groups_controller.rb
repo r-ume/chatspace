@@ -17,7 +17,7 @@ class ChatGroupsController < ApplicationController
     @chat_group = ChatGroup.new(chat_group_params)
     if @chat_group.save
       flash[:notice] = 'グループ作成成功'
-      redirect_to controller: :chat_groups, action: :index
+      redirect_to chat_groups_path
     else
       flash[:alert] = 'グループ作成失敗'
       redirect_to new_chat_group_path
