@@ -15,8 +15,13 @@ class ChatGroupsController < ApplicationController
   #POST /chat_groups
   def create
     @chat_group = ChatGroup.new(chat_group_params)
-    @chat_group.save
-    redirect_to controller: :chat_groups, action: :index
+    if @chat_group.save
+      flash.now[:notice] = 'グループ作成成功'
+      redirect_to chat_groups_path
+    else
+      flash.now[:alert] = 'グループ作成失敗'
+      redirect_to new_chat_group_path
+    end
   end
 
   # GET /chat_groups/:chat_groups_id/edit
@@ -25,8 +30,15 @@ class ChatGroupsController < ApplicationController
   end
 
   def update
-    @chat_group.update(chat_group_params)
-    redirect_to controller: :chat_groups, action: :index
+    if @chat_group.update(chat_group_params)
+      flash.now[:notice] = 'グループ編集成功'
+      redirect_to chat_group_messages_path(@chat_group)
+    else
+      flash.now[:alert] = 'グループ作成失敗'
+      redirect_to edit_chat_group_path(@chat_group)
+    end
+
+
   end
 
   private

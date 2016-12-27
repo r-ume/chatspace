@@ -24,16 +24,11 @@
           = f.label 'ChatMembers'
       .chat-group-form__field--right
         #chat-group-users
-          .chat-group--user.chat-group-user__name
+          %p.chat-group-user__name
             = current_user.name
+          #chat-group-user.chat-group-user.remove-from-list.clearfix
             = f.hidden_field :user_ids, value: current_user.id, multiple: true
-          - @new_chat_group.users.each do |user|
-            .chat-group-user{ id: "chat-group-user-#{user.id}" }
-              %input{ value: user.id }
-              %p= user.name
-              -#hamlの書きかた、覚えるべし
-              %a{ 'data-user-id': user.id } 削除
 
     .chat-group-form__field.clearfix
       .chat-group-form__field--right
-        = f.submit "Save", class: "chat-group-form_action-button"
+        = f.submit "Save", class: 'chat-group-form__action-button'
