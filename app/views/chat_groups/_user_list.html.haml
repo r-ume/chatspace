@@ -1,5 +1,8 @@
 #chat-group-user.chat-group-user.remove-from-list.clearfix
-  %input{ id: 'chat-group-user', class: 'chat-group-user remove-from-list clearfix',
-              name: 'chat_group[user_ids][]', type: 'hidden', value: user_list.id }
+  %input{ id: 'chat-group-user',
+          class: 'chat-group-user remove-from-list clearfix',
+          name: 'chat_group[user_ids][]',
+          type: 'hidden',
+          value: user_list.id }
     %p.chat-group-user__name
       = user_list.name
