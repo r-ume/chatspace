@@ -76,10 +76,8 @@ $(function(){
     // 自動更新用のURLにchat_groupsとmessageが含まれているかをチェック
     function isJsonUrlForAutoReload(url){
        if (url.indexOf(/\/chat_groups\/d+\/messages/)){
-           console.log('true');
            return true;
        } else {
-           console.log('false');
            return false;
        }
     }
