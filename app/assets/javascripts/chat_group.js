@@ -14,7 +14,7 @@ $(function(){
                 "class = 'user-search-add chat-group-user__button chat-group-user__button-add' data-user-id='" +
                     data.id + "' data-user-name= '" + data.name + "'>" + "追加" + "</a>" + "</div>";
 
-        $('#user-search-result').append(html);
+        return html;
     }
 
     // 追加されたユーザーを削除
@@ -57,7 +57,7 @@ $(function(){
     // idがuser-search-resultのところで、
     // change keyupされたとき、
     // 定義された関数を起こす。
-    $('#user-search-field').on('change keyup', displayUsers);
+    $('#user-search-field').on('click', displayUsers);
 
     // 非同期通信
     // ユーザー検索（インクリメンタルサーチ）
@@ -79,7 +79,7 @@ $(function(){
             var insertHtml = '';
             // このeach分は覚えるべし
             $.each(json, function(i, data){
-                insertHtml = usersSearchForJoin(data);
+                insertHtml += usersSearchForJoin(data);
             });
             $('#user-search-result').html(insertHtml);
         })
