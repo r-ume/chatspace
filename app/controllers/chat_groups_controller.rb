@@ -16,10 +16,10 @@ class ChatGroupsController < ApplicationController
   def create
     @chat_group = ChatGroup.new(chat_group_params)
     if @chat_group.save
-      flash[:notice] = 'グループ作成成功'
+      flash.now[:notice] = 'グループ作成成功'
       redirect_to chat_groups_path
     else
-      flash[:alert] = 'グループ作成失敗'
+      flash.now[:alert] = 'グループ作成失敗'
       redirect_to new_chat_group_path
     end
   end
@@ -31,10 +31,10 @@ class ChatGroupsController < ApplicationController
 
   def update
     if @chat_group.update(chat_group_params)
-      flash[:notice] = 'グループ編集成功'
+      flash.now[:notice] = 'グループ編集成功'
       redirect_to chat_group_messages_path(@chat_group)
     else
-      flash[:alert] = 'グループ作成失敗'
+      flash.now[:alert] = 'グループ作成失敗'
       redirect_to edit_chat_group_path(@chat_group)
     end
 
