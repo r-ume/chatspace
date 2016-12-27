@@ -4,7 +4,11 @@
 // shorthand for
 // $(document).ready(function()(
 // ));
-$(function(){
+// $(function(){
+
+// ページ遷移したら、jQueryが読み込まれないため、turbolinkを追加
+// http://qiita.com/mm36/items/9c446ab8e034ad898b15
+$(document).on('turbolinks:load', function(){
     function usersSearchForJoin(data){
         var html =
             "<div class = 'chat-group-user clearfix'>" +
