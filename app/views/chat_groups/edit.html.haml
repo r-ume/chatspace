@@ -4,11 +4,11 @@
     = form_for @chat_group, url: chat_group_path do |f|
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
-          = f.label :name, "グループ名", class: "chat-group-form__label"
+          = f.label :name, "グループ名", class: 'chat-group-form__label'
 
         .chat-group-form__field--right
           #chat_group_name
-            = f.text_field :name, value: @chat_group.name, placeholder: "グループ名を入力してください", class: "chat-group-form__input"
+            = f.text_field :name, value: @chat_group.name, placeholder: "グループ名を入力してください", class: 'chat-group-form__input'
 
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
@@ -29,4 +29,4 @@
 
       .chat-group-form__field.clearfix
         .chat-group-form__field--right
-          = f.submit "save", class: "chat-group-form__action-button"
+          = f.submit "save", class: 'chat-group-form__action-button'

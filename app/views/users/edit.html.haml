@@ -4,8 +4,8 @@
       .account-page__inner--left.account-page__header
         %h2 Edit Account
         %h5 アカウントの編集
-        = link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "left-button"
-        = link_to "トップページに戻る", root_path, class: "left-button"
+        = link_to "ログアウト", destroy_user_session_path, :method => :delete, class: 'left-button'
+        = link_to "トップページに戻る", root_path, class: 'left-button'
 
       .account-page__inner--right.user-form
         = form_for @user, :url => {:action => :update} do |f|
@@ -48,5 +48,5 @@
               = f.password_field :current_password, autocomplete: "off"
 
           .actions
-            = f.submit "Update", class: "right-button"
+            = f.submit "Update", class: 'right-button'
 
