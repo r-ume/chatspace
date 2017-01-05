@@ -1,4 +1,4 @@
-# ProtoSpace
+# ChatSpace
 
 ## Userモデル
   - email
