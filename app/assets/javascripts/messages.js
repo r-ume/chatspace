@@ -94,7 +94,7 @@ $(function(){
                    var html = '';
                    // forEach関数で、配列を一つ一つ処理
                    data.forEach(function(message_new){
-                       html = new_message(message_new);
+                       html += new_message(message_new);
                    });
                    // html関数は、指定した要素を書き換える removeとappendを一緒にする関数
                    $('ul.chat-messages').html(html);
