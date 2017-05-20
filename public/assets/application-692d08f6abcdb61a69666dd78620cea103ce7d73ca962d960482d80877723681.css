@@ -1,0 +1,473 @@
+/* line 1, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat {
+  min-width: 980px;
+  height: 100vh;
+}
+/* line 4, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat .chat-side {
+  height: 100%;
+  float: left;
+  width: 300px;
+  background-color: #2f3e51;
+}
+
+/* line 12, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-user {
+  height: 80px;
+  padding: 20px;
+  background-color: #253141;
+  color: #fff;
+}
+/* line 17, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-user h5 {
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 60px;
+}
+/* line 25, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-user__actions {
+  float: right;
+}
+/* line 28, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-user__action {
+  display: inline-block;
+  margin: 15px 0 15px 3px;
+  line-height: 28px;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* line 36, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* line 42, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-group {
+  box-sizing: border-box;
+}
+/* line 44, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-group__link {
+  text-decoration: none;
+  display: block;
+  padding: 20px 20px;
+  color: #fff;
+}
+/* line 50, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-group__name {
+  display: inline-block;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+/* line 55, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-group__message {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* line 61, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-main {
+  float: left;
+  position: relative;
+  width: calc(100% - 300px);
+  height: 100%;
+}
+
+/* line 68, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header {
+  padding-right: 40px;
+  padding-left: 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+/* line 73, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header--left {
+  float: left;
+}
+/* line 75, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header--left h2 {
+  margin-top: 20px;
+  line-height: 50px;
+  letter-spacing: 2px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 400;
+}
+/* line 84, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header--right {
+  float: right;
+}
+/* line 87, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header__users {
+  line-height: 20px;
+  color: #999;
+  font-size: 12px;
+}
+/* line 92, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header__user {
+  margin-left: 3px;
+}
+/* line 96, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-header__edit-button {
+  display: inline-block;
+  margin: 28px 0;
+  padding-right: 20px;
+  padding-left: 20px;
+  line-height: 40px;
+  color: #38aef0;
+  font-size: 14px;
+  border: 2px solid;
+  text-decoration: none;
+}
+
+/* line 109, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-body {
+  overflow: scroll;
+  position: relative;
+  padding: 30px 0;
+  height: calc(100% - 250px);
+}
+
+/* line 117, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-messages {
+  right: 40px;
+  left: 40px;
+}
+
+/* line 122, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-message {
+  list-style: none;
+  margin-bottom: 40px;
+}
+/* line 125, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-message__header {
+  line-height: 20px;
+}
+/* line 128, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-message__name {
+  float: left;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+/* line 133, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-message__time {
+  float: left;
+  margin-left: 10px;
+  color: #aaa;
+  font-size: 12px;
+  padding-top: 5px;
+}
+/* line 140, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-message__body {
+  font-size: 14px;
+}
+/* line 143, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-message__image {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+/* line 149, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-footer {
+  position: absolute;
+  height: 50px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #ddd;
+}
+/* line 157, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-footer__body {
+  float: left;
+  width: calc(100% - 115px);
+  position: relative;
+}
+/* line 161, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-footer__body textarea {
+  width: 100%;
+  height: 20px;
+  padding: 15px 10px;
+  line-height: 20px;
+  border: none;
+  resize: none;
+  display: block;
+}
+/* line 172, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-footer__file {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 182, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-footer__file input {
+  display: none;
+}
+/* line 187, /home/umeki/rails/chatspace/app/assets/stylesheets/chat.scss */
+.chat-footer input[type=submit] {
+  float: left;
+  display: inline-block;
+  width: 100px;
+  margin-left: 15px;
+  line-height: 50px;
+  color: #fff;
+  background-color: deepskyblue;
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+
+/* line 1, /home/umeki/rails/chatspace/app/assets/stylesheets/common.scss */
+.contents {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 6, /home/umeki/rails/chatspace/app/assets/stylesheets/common.scss */
+html, body {
+  padding: 0;
+  height: 100%;
+}
+
+/* line 11, /home/umeki/rails/chatspace/app/assets/stylesheets/common.scss */
+body {
+  margin: 0;
+}
+
+/* line 15, /home/umeki/rails/chatspace/app/assets/stylesheets/common.scss */
+.layout-notice {
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  background-color: deepskyblue;
+  text-align: center;
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* line 26, /home/umeki/rails/chatspace/app/assets/stylesheets/common.scss */
+.layout-alert {
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  background-color: red;
+  font-weight: 200;
+  text-align: center;
+  margin: 0;
+}
+
+/* line 1, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html {
+  background-color: #fafafa;
+}
+/* line 4, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__inner {
+  width: 858px;
+  margin: 60px auto;
+  padding: 60px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+/* line 12, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__inner--left, html .account-page__inner--right {
+  float: left;
+  width: 50%;
+}
+/* line 16, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__inner:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+/* line 23, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__header h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  font-size: 40px;
+  font-weight: 200;
+}
+/* line 29, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__header h2:after {
+  content: '';
+  display: block;
+  width: 60px;
+  margin-top: 5px;
+  border-bottom: 1px solid skyblue;
+}
+/* line 37, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__header h5 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 200;
+}
+/* line 43, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page__header .left-button {
+  display: inline-block;
+  margin-top: 50px;
+  padding: 15px 30px;
+  color: #fff;
+  background-color: #ccc;
+  font-size: 14px;
+  text-decoration: none;
+}
+/* line 55, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page .field {
+  margin-bottom: 10px;
+}
+/* line 58, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page .field .field-label {
+  padding: 10px 0;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 200;
+}
+/* line 64, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page .field .field-label i {
+  font-size: 11px;
+}
+/* line 70, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page .field .field-input input {
+  width: 100%;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+/* line 78, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+html .account-page .right-button {
+  display: inline-block;
+  height: 50px;
+  margin-top: 30px;
+  padding: 0 30px;
+  line-height: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  background-color: deepskyblue;
+  font-size: 14px;
+}
+
+/* line 96, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+#error_explanation {
+  margin: 20px 0;
+  padding: 20px 30px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+/* line 102, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+#error_explanation h2 {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 14px;
+}
+/* line 108, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+#error_explanation ul {
+  margin: 0;
+  padding-left: 17px;
+}
+/* line 113, /home/umeki/rails/chatspace/app/assets/stylesheets/user.scss */
+#error_explanation li {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+/* line 2, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form {
+  width: 980px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+/* line 10, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form h1 {
+  letter-spacing: 2px;
+  font-size: 24px;
+  text-align: center;
+}
+/* line 16, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form__action-button {
+  display: inline-block;
+  padding: 12px 20px;
+  color: #fff;
+  background-color: deepskyblue;
+  border: 0;
+}
+/* line 24, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form__field {
+  margin-top: 30px;
+}
+/* line 27, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form__field--left {
+  float: left;
+  width: 25%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+/* line 34, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form__field--right {
+  float: right;
+  width: 70%;
+}
+/* line 40, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form__label {
+  display: block;
+  line-height: 50px;
+  font-weight: bold;
+  text-align: right;
+}
+/* line 47, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-form__input {
+  float: left;
+  width: 100%;
+  line-height: 30px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+/* line 56, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-user {
+  padding: 0 15px;
+  line-height: 30px;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+/* line 62, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-user__name {
+  float: left;
+  padding-left: 15px;
+}
+/* line 67, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-user__button {
+  float: right;
+  display: inline-block;
+  cursor: pointer;
+}
+/* line 72, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-user__button--add {
+  color: deepskyblue;
+}
+/* line 76, /home/umeki/rails/chatspace/app/assets/stylesheets/group.scss */
+.chat-group-user__button--remove {
+  color: #f05050;
+}
+
+/*
+* require= font-awesome
+*/
