@@ -19,10 +19,12 @@
 #
 
 FactoryGirl.define do
+  password = Faker::Internet.password(6, 128)
+
   factory :user do
-    email { Faker::Internet.email }
-    password 'testtest'
-    encrypted_password 'test'
-    name 'tester'
+    name                   { Faker::Internet.user_name }
+    email                  { Faker::Internet.email }
+    password               password
+    password_confirmation  password
   end
 end
