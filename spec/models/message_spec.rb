@@ -1,7 +1,19 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id            :integer          not null, primary key
+#  body          :text(65535)
+#  chat_group_id :integer
+#  user_id       :integer
+#  image         :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Message do
-
   describe '#create' do
     context 'Checking Attributes Existence' do
       let(:message) { FactoryGirl.build(:message) }
