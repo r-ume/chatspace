@@ -14,8 +14,8 @@
 require 'rails_helper'
 
 RSpec.describe Message do
-  describe '#create' do
-    context 'Checking Attributes Existence' do
+  describe '#Create' do
+    context 'Properties' do
       let(:message) { FactoryGirl.build(:message) }
 
       it 'is valid with all attributes(body, image, user_id, group_id)' do
