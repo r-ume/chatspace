@@ -76,8 +76,9 @@ RSpec.describe User do
       end
 
       it 'is invalid when an email is already token' do
-        existing_user = create(:user, email: 'kkk@gmail.com')
-        following_user = build(:user, email: 'kkk@gmail.com')
+        fake_email = Faker::Internet.email
+        existing_user = create(:user, email: fake_email)
+        following_user = build(:user, email: fake_email)
         following_user.valid?
         expect(following_user.errors[:email]).to include('has already been taken')
       end
