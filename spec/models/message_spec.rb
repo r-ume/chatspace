@@ -40,10 +40,23 @@ RSpec.describe Message do
     end
 
     context 'When a message cannot be saved' do
-      it 'is invalid without a body message' do
-        message.body = ""
-        message.valid?
-        expect(message.errors[:body]).to include("can't be blank")
+      it 'is invalid without both a body message and an image' do
+        message.body = nil
+        message.image = nil
+        save_result = message.valid?
+        expect(save_result).to be false
+      end
+
+      it 'is invalid without a group_id' do
+        message.chat_group_id = nil
+        save_result = message.invalid?
+        expect(save_result).to be false
+      end
+
+      it 'is invalid without a user_id' do
+        message.user_id = nil
+        save_result = message.invalid?
+        expect(save_result).to be false
       end
     end
   end
