@@ -47,7 +47,7 @@ RSpec.describe User do
         expect(user.errors[:email]).to include('can\'t be blank')
       end
 
-      it 'is valid when a range in characters for password is from 8 to 128 characters' do
+      it 'is valid when a range in characters for password is from 6 to 128 characters' do
         password                   = Faker::Internet.password(6, 128)
         user.password              = password
         user.password_confirmation = password
@@ -71,8 +71,8 @@ RSpec.describe User do
       end
 
       it 'is invalid if password and password_confirmation do not match' do
-        unauthentic_password = Faker::Internet.password
-        expect(user.password).not_to be(unauthentic_password)
+        password = Faker::Internet.password
+        expect(user.password_confirmation).not_to be(password)
       end
 
       it 'is invalid when an email is already token' do
