@@ -23,7 +23,7 @@ require 'rails_helper'
 RSpec.describe User do
   describe '#Create Action' do
     context 'About Properties' do
-      let(:user) { FactoryGirl.build(:user) }
+      let(:user) { build(:user) }
 
       it 'is valid with name, email, password, password_confirmation' do
         expect(user).to be_valid
