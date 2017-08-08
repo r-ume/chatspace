@@ -15,13 +15,31 @@ require 'rails_helper'
 
 RSpec.describe Message do
   describe '#Create' do
-    context 'Properties' do
-      let(:message) { build(:message) }
+    let(:message) { build(:message) }
 
-      it 'is valid with all attributes(body, image, user_id, group_id)' do
+    context 'When a message can be saved' do
+      it 'is valid with all attributes(body, image, user_id, group_id) contained' do
         expect(message).to be_valid
       end
 
+      it 'is valid with a message' do
+        message.body = Faker::Pokemon.name # just for fun
+        expect(message).to be_valid
+      end
+
+      it 'is valid with an image included' do
+        message.image = Faker::Company.logo
+        expect(message).to be_valid
+      end
+
+      it 'is valid with both a message and an image included' do
+        message.image = Faker::Company.logo
+        message.body = Faker::Pokemon.name # just for fun
+        expect(message).to be_valid
+      end
+    end
+
+    context 'When a message cannot be saved' do
       it 'is invalid without a body message' do
         message.body = ""
         message.valid?
