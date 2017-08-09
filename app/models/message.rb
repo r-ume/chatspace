@@ -15,7 +15,8 @@ class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :chat_group
 
-  validates :body, :image, presence: true
+  validates :body, presence: true
+
   validates_associated :user
   validates_associated :chat_group
 
