@@ -12,8 +12,10 @@
 #
 
 require 'rails_helper'
+include ActionDispatch::TestProcess
 
 RSpec.describe Message do
+
   describe '#Create' do
     let(:message) { build(:message) }
 
@@ -28,12 +30,12 @@ RSpec.describe Message do
       end
 
       it 'is valid with an image included' do
-        message.image = Faker::Company.logo
+        message.image = fixture_file_upload('ph04.png')
         expect(message).to be_valid
       end
 
       it 'is valid with both a message and an image included' do
-        message.image = Faker::Company.logo
+        message.image = fixture_file_upload('ph04.png')
         message.body = Faker::Pokemon.name # just for fun
         expect(message).to be_valid
       end
