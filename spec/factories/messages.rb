@@ -13,9 +13,9 @@
 
 FactoryGirl.define do
   factory :message do
-    body             { Faker::Pokemon.name } #just for fun
-    image            Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/support/image/ph04.png'))
-    chat_group_id    Faker::Number.number(3)
-    user_id          Faker::Number.number(3)
+    body        { Faker::Pokemon.name } #just for fun
+    image       Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/support/image/ph04.png'))
+    association :chat_group, factory: :chat_group, name: Faker::Pokemon.name
+    association :user,       factory: :user,       name: Faker::Pokemon.name
   end
 end
