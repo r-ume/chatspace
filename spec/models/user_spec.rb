@@ -71,8 +71,9 @@ RSpec.describe User do
       end
 
       it 'is invalid if password and password_confirmation do not match' do
-        password = Faker::Internet.password
-        expect(user.password_confirmation).not_to be(password)
+        user.password = Faker::Internet.password
+        user.valid?
+        expect(user.password_confirmation).not_to be(user.password)
       end
 
       it 'is invalid when an email is already token' do
