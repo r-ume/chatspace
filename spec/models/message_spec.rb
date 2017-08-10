@@ -15,11 +15,6 @@ require 'rails_helper'
 
 include ActionDispatch::TestProcess
 
-class CustomMessage < ActiveRecord::Base
-  self.table_name = :messages
-  validates :image, presence: true
-end
-
 RSpec.describe Message do
   describe '#Create' do
     let(:message) { build(:message) }
@@ -35,7 +30,9 @@ RSpec.describe Message do
       end
 
       it 'is valid with an image included' do
-        expect(CustomMessage.new(body: '', image: fixture_file_upload('ph04.png'))).to be_valid
+        message.body = ""
+        message.image = fixture_file_upload('ph04.png')
+        expect(message).to be_valid
       end
 
       it 'is valid with both a message and an image included' do

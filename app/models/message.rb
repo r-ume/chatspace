@@ -12,11 +12,12 @@
 #
 
 class Message < ActiveRecord::Base
+  # Associations
   belongs_to :user
   belongs_to :chat_group
 
-  validates :body, presence: true
-
+  # validations
+  validates :body_or_image, presence: true
   validates_associated :user
   validates_associated :chat_group
 
@@ -30,5 +31,10 @@ class Message < ActiveRecord::Base
         time: created_at.strftime('%Y/%m/%d %H:%M:%S'),
         image: image.to_s
     }
+  end
+
+  private
+  def body_or_image
+    body.presence or image.presence
   end
 end
