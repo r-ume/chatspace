@@ -1,9 +1,23 @@
-FactoryGirl.define do
+# == Schema Information
+#
+# Table name: messages
+#
+#  id            :integer          not null, primary key
+#  body          :text(65535)
+#  chat_group_id :integer
+#  user_id       :integer
+#  image         :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 
+include ActionDispatch::TestProcess
+
+FactoryGirl.define do
   factory :message do
-    text 'rspec_message'
-    chat_group_id 1
-    user_id 1
-    image 'rspec.jpg'
+    body        { Faker::Pokemon.name } #just for fun
+    image       { fixture_file_upload(Rails.root.join('spec/fixtures/ph04.png')) }
+    association :chat_group, factory: :chat_group, name: Faker::Pokemon.name
+    association :user,       factory: :user,       name: Faker::Pokemon.name
   end
 end
