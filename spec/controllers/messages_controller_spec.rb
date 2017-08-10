@@ -1,36 +1,51 @@
 require 'rails_helper'
 
-describe MessagesController do
-  login_user
-  describe 'GET #index' do
-    it 'renders the :index template' do
-      messages = Message.all
-      get :index
-      expect(response).to render_template :index
-      expect(assigns(:messages)).to eq(messages)
+RSpec.describe MessagesController, type: :controller do
+  describe '#GET index' do
+    context 'ログインしている場合' do
+      it 'アクション内で定義しているインスタンス変数があるか' do
+
+      end
+
+      it '該当するビューが描画されているか' do
+
+      end
+    end
+
+    context 'ログインしていない場合' do
+      it '意図した画面にリダイレクトできているのか' do
+
+      end
     end
   end
 
-  describe 'POST #create' do
-      let(:message) { Message.create(body: 'RSpec', chat_group_id: 1 , user_id: 1, image: 'rspec.jpg') }
-      before do
-        message # ここでデータベースにレコードを保存する
+  describe 'GET #create' do
+    context 'ログインしている場合' do
+      context 'メッセージの保存に成功' do
+        it 'メッセージの保存ができたか' do
+
+        end
+
+        it '意図した画面に遷移しているのか' do
+
+        end
       end
 
-      it 'create a new message' do
-        expect(Message.last).to eq message
-      end
-  end
+      context 'メッセージの保存に失敗' do
 
-  describe 'whether devise works' do
-    it 'should have a current_user' do
-      #2.11からshouldやshould_notは古くなったそう
-      expect(subject.current_user).not_to be_nil
+        it 'メッセージの保存は行われなかったか' do
+
+        end
+
+        it '意図したビューが描画されているか' do
+
+        end
+      end
     end
 
-    it 'should get index' do
-      get 'index'
-      response.should be_success
+    context 'ログインしていない場合' do
+      it '意図した画面にリダイレクトされているのか' do
+      end
     end
   end
 end
