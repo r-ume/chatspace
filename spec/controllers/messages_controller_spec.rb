@@ -30,9 +30,9 @@ RSpec.describe MessagesController, type: :controller do
       end
     end
 
-    context 'ログインしていない場合' do
-      it '意図した画面にリダイレクトできているのか' do
-
+    context 'when an user is not signed in' do
+      it 'goes to a login page' do
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
