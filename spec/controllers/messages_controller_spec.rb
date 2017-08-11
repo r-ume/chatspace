@@ -9,7 +9,7 @@ RSpec.describe MessagesController, type: :controller do
     context 'when an user is signed in' do
       login_user
       before do
-        get :index,  { chat_group_id: chat_group }
+        get :index, { chat_group_id: chat_group }
       end
 
       it 'has same @messages as ones in params' do
@@ -25,17 +25,17 @@ RSpec.describe MessagesController, type: :controller do
       it 'has an empty message instance' do
         expect(assigns(:message)).to be_a_new(Message)
       end
-      #
-      # it 'render the :index template' do
-      #   expect(response).to render_template :index
-      # end
+
+      it 'render the :index template' do
+        expect(response).to render_template :index
+      end
     end
 
-    # context 'when an user is not signed in' do
-    #   it 'goes to a login page' do
-    #     expect(response).to have_http_status 200
-    #   end
-    # end
+    context 'when an user is not signed in' do
+      it 'goes to a login page' do
+        expect(response).to have_http_status 200
+      end
+    end
   end
 end
 
