@@ -2,9 +2,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, only: %i(index create)
   before_action :set_chat_groups
   before_action :set_chat_group
-  #CSRF対策を無効にしたい場合に入れるコード
+  # CSRF対策を無効にしたい場合に入れるコード
   skip_before_filter :verify_authenticity_token
-
 
   def index
     @chat_groups = current_user.chat_groups
@@ -16,7 +15,6 @@ class MessagesController < ApplicationController
       # mapメソッドで、userの名前を取得
       format.json { render json: @chat_group.messages.includes(:user).map{|x| x.json_api} }
     end
-
   end
 
   def create
