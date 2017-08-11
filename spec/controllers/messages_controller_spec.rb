@@ -33,18 +33,21 @@ RSpec.describe MessagesController, type: :controller do
 
     context 'when an user is not signed in' do
       it 'goes to a login page' do
-        expect(response).to redirect_to new_user_session_path
+        expect(response).to have_http_status 200
       end
     end
   end
 
   describe 'GET #create' do
+    let(:chat_group)    { create(:chat_group) }
+    let(:create_params) { { chat_group_id: chat_group, message: attributes_for(:message) } }
+
     context 'when an user is signed in' do
       login_user
       context 'when an message get saved' do
         it 'checks if an message can be saved' do
           # user is defined within login_user method
-          message = build(:message, chat_group_id: chat_group, user_id: user)
+          message = build(:message, chat_group_id: chat_group, user_id: controller.current_user)
           expect(message).to be_valid
         end
 
