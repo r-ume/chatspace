@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe MessagesController, type: :controller do
   describe '#GET index' do
-    let(:chat_group)    { create(:chat_group) }
+    let(:user)          { create(:user) }
+    let!(:chat_group)   { create(:chat_group) }
+    let!(:message)      { create(:message, chat_group_id: chat_group.id ) }
     let(:index_params)  { { chat_group_id: chat_group } }
     let(:create_params) { { chat_group_id: chat_group, message: attributes_for(:message) } }
 
@@ -12,13 +14,12 @@ RSpec.describe MessagesController, type: :controller do
         get :index, { chat_group_id: chat_group }
       end
 
-      it 'has same @messages as ones in params' do
-        messages = create_list(:message, 3, chat_group_id: chat_group.id, user_id: controller.current_user.id)
-        expect(assigns(:messages)).to eq messages
+      it 'assigns the requested message to @messages' do
+        expect(assigns(:messages)).to include message
       end
 
-      it "has @chat_groups same as params" do
-        chat_groups = create_list(:chat_group, 3, user_ids: controller.current_user.id)
+      it 'assigns the requested chat_group to @chat_groups' do
+        chat_groups = user.chat_groups
         expect(assigns(:chat_groups)).to eq chat_groups
       end
 
