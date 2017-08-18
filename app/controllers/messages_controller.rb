@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
           render json: { user: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url }
         end
       end
-      flash.now[:notice] = 'successfully sent'
+      flash[:notice] = 'successfully sent'
     else
       flash.now[:notice] = 'Unfortunately failed to sent'
     end
