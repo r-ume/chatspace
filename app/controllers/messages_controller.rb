@@ -34,7 +34,8 @@ class MessagesController < ApplicationController
       end
       flash[:notice] = 'successfully sent'
     else
-      flash.now[:notice] = 'Unfortunately failed to sent'
+      flash[:alert] = 'Unfortunately failed to sent'
+      render :index
     end
 
     @messages = @chat_group.messages.all
