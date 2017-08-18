@@ -82,6 +82,10 @@ RSpec.describe MessagesController, type: :controller do
         it 'redirects to chat_group_messages_path' do
           expect(response).to render_template :index
         end
+
+        it 'has the alert flash message' do
+          expect(flash[:alert]).to eq 'Unfortunately failed to sent'
+        end
       end
     end
 
