@@ -5,6 +5,7 @@ gem 'rails', '4.2.5'
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 gem 'rake', '11.3.0'
 gem 'pry-rails'
+gem 'pry-byebug'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -17,7 +18,6 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
 # gem 'therubyracer', platforms: :ruby
 
 # AUTHENTICATION
@@ -42,11 +42,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  gem 'rspec-rails', '~> 3.1.0'
+  # rspec
+  gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails', '~> 4.4.1'
-
   gem 'faker'
+  gem 'rails-controller-testing'
 
+  # deploy
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'

@@ -18,8 +18,8 @@ class Message < ActiveRecord::Base
 
   # validations
   validates :body_or_image, presence: true
-  validates_associated :user
-  validates_associated :chat_group
+  validates :user,          presence: true
+  validates :chat_group,    presence: true
 
   mount_uploader :image, ImageUploader
 

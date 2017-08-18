@@ -1,36 +1,95 @@
 require 'rails_helper'
 
-describe MessagesController do
-  login_user
-  describe 'GET #index' do
-    it 'renders the :index template' do
-      messages = Message.all
-      get :index
-      expect(response).to render_template :index
-      expect(assigns(:messages)).to eq(messages)
-    end
-  end
+RSpec.describe MessagesController, type: :controller do
+  let(:user)          { create(:user) }
+  let!(:chat_group)   { create(:chat_group) }
+  let!(:message)      { create(:message, chat_group_id: chat_group.id ) }
+  let(:index_params)  { { chat_group_id: chat_group } }
+  let(:valid_create_params) { {
+      chat_group_id: chat_group.id, user_id: user.id, message: attributes_for(:message)
+  } }
+  let(:invalid_create_params) { {
+      chat_group_id: chat_group.id, message: attributes_for(:message, body: nil, image: nil)
+  } }
 
-  describe 'POST #create' do
-      let(:message) { Message.create(body: 'RSpec', chat_group_id: 1 , user_id: 1, image: 'rspec.jpg') }
+  describe '#GET index' do
+    context 'when an user is signed in' do
+      login_user
       before do
-        message # ここでデータベースにレコードを保存する
+        get :index, { chat_group_id: chat_group }
       end
 
-      it 'create a new message' do
-        expect(Message.last).to eq message
+      it 'assigns the requested message to @messages' do
+        expect(assigns(:messages)).to include message
       end
-  end
 
-  describe 'whether devise works' do
-    it 'should have a current_user' do
-      #2.11からshouldやshould_notは古くなったそう
-      expect(subject.current_user).not_to be_nil
+      it 'assigns the requested chat_group to @chat_groups' do
+        chat_groups = user.chat_groups
+        expect(assigns(:chat_groups)).to eq chat_groups
+      end
+
+      it 'has an empty message instance' do
+        expect(assigns(:message)).to be_a_new(Message)
+      end
+
+      it 'render the :index template' do
+        expect(response).to render_template :index
+      end
     end
 
-    it 'should get index' do
-      get 'index'
-      response.should be_success
+    context 'when an user is not signed in' do
+      it 'goes to a login page' do
+        expect(response).to have_http_status 200
+      end
+    end
+  end
+
+  describe 'GET #create' do
+    describe 'when an user is signed in' do
+      login_user
+      context 'with valid attributes' do
+        before(:each) do
+          post :create, valid_create_params
+        end
+
+        it 'checks if an message can be saved' do
+          expect{ post :create, valid_create_params }.to change(Message, :count).by(1)
+        end
+
+        it 'redirects to chat_group_messages_path' do
+          post :create, valid_create_params
+          expect(response).to redirect_to chat_group_messages_path
+        end
+
+        it 'has the flash message' do
+          expect(flash[:notice]).to eq 'successfully sent'
+        end
+      end
+
+      context 'with invalid attributes' do
+        before(:each) do
+          post :create, invalid_create_params
+        end
+
+        it 'sees if an message does not get saved when image and body are nil' do
+          expect{ post :create, invalid_create_params }.not_to change(Message, :count)
+        end
+
+        it 'redirects to chat_group_messages_path' do
+          expect(response).to render_template :index
+        end
+
+        it 'has the alert flash message' do
+          expect(flash[:alert]).to eq 'Unfortunately failed to sent'
+        end
+      end
+    end
+
+    describe 'when an user is not signed in' do
+      it 'renders new session template' do
+        post :create, valid_create_params
+        expect(response).to redirect_to new_user_session_path
+      end
     end
   end
 end

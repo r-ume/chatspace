@@ -53,13 +53,13 @@ RSpec.describe Message do
       it 'is invalid without a group_id' do
         message.chat_group_id = nil
         save_result = message.invalid?
-        expect(save_result).to be false
+        expect(save_result).to be true
       end
 
       it 'is invalid without a user_id' do
         message.user_id = nil
         save_result = message.invalid?
-        expect(save_result).to be false
+        expect(save_result).to be true
       end
     end
   end
