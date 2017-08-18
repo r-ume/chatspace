@@ -46,7 +46,7 @@ RSpec.describe MessagesController, type: :controller do
         chat_group_id: chat_group.id, user_id: user.id, message: attributes_for(:message)
     } }
     let(:invalid_create_params) { {
-        chat_group_id: chat_group.id, user_id: nil, message: attributes_for(:message, body: nil, image: nil)
+        chat_group_id: chat_group.id, message: attributes_for(:message, body: nil, image: nil)
     } }
 
     describe 'when an user is signed in' do
@@ -77,12 +77,10 @@ RSpec.describe MessagesController, type: :controller do
 
         it 'sees if an message does not get saved' do
           expect{ post :create, invalid_create_params }.not_to change(Message, :count)
-          # message = build(:message, body: "", image: "")
-          # expect(message).to be_invalid
         end
 
         it 'redirects to chat_group_messages_path' do
-          expect(response).to redirect_to chat_group_messages_path
+          expect(response).to render_template :index
         end
       end
     end
