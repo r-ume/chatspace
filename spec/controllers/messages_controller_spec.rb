@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe MessagesController, type: :controller do
-  describe '#GET index' do
-    let(:user)          { create(:user) }
-    let!(:chat_group)   { create(:chat_group) }
-    let!(:message)      { create(:message, chat_group_id: chat_group.id ) }
-    let(:index_params)  { { chat_group_id: chat_group } }
-    let(:create_params) { { chat_group_id: chat_group, message: attributes_for(:message) } }
+  let(:user)          { create(:user) }
+  let!(:chat_group)   { create(:chat_group) }
+  let!(:message)      { create(:message, chat_group_id: chat_group.id ) }
+  let(:index_params)  { { chat_group_id: chat_group } }
+  let(:valid_create_params) { {
+      chat_group_id: chat_group.id, user_id: user.id, message: attributes_for(:message)
+  } }
+  let(:invalid_create_params) { {
+      chat_group_id: chat_group.id, message: attributes_for(:message, body: nil, image: nil)
+  } }
 
+  describe '#GET index' do
     context 'when an user is signed in' do
       login_user
       before do
@@ -40,19 +45,10 @@ RSpec.describe MessagesController, type: :controller do
   end
 
   describe 'GET #create' do
-    let(:user)          { create(:user) }
-    let(:chat_group)    { create(:chat_group) }
-    let(:valid_create_params) { {
-        chat_group_id: chat_group.id, user_id: user.id, message: attributes_for(:message)
-    } }
-    let(:invalid_create_params) { {
-        chat_group_id: chat_group.id, message: attributes_for(:message, body: nil, image: nil)
-    } }
-
     describe 'when an user is signed in' do
       login_user
       context 'with valid attributes' do
-        before do
+        before(:each) do
           post :create, valid_create_params
         end
 
@@ -71,11 +67,11 @@ RSpec.describe MessagesController, type: :controller do
       end
 
       context 'with invalid attributes' do
-        before do
+        before(:each) do
           post :create, invalid_create_params
         end
 
-        it 'sees if an message does not get saved' do
+        it 'sees if an message does not get saved when image and body are nil' do
           expect{ post :create, invalid_create_params }.not_to change(Message, :count)
         end
 
