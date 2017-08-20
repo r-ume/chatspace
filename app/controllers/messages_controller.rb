@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   def index
     @chat_groups = current_user.chat_groups
-    @messages = @chat_group.messages
+    @messages = MessagesDecorator.decorate_collection(@chat_group.messages)
     @message = Message.new
 
     respond_to do |format|
