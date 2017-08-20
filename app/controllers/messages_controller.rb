@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
       render :index
     end
 
-    @messages = @chat_group.messages.all
+    @messages = MessagesDecorator.decorate_collection(@chat_group.messages)
   end
 
   private
