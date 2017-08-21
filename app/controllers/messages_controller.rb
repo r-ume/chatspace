@@ -8,7 +8,6 @@ class MessagesController < ApplicationController
 
   def index
     @chat_groups = current_user.chat_groups
-    # @messages = MessagesDecorator.decorate_collection(@chat_group.messages)
     @message = Message.new
 
     respond_to do |format|
@@ -38,8 +37,6 @@ class MessagesController < ApplicationController
       flash[:alert] = 'Unfortunately failed to sent'
       render :index
     end
-
-    # @messages = MessagesDecorator.decorate_collection(@chat_group.messages)
   end
 
   private
