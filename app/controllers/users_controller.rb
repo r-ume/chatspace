@@ -1,22 +1,21 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
+
   def index
     # http://www.rokurofire.info/2014/01/05/rails_jquery_incsearch/
-    # 上のページ参照
     # jQueryのdataで、１つのカラムだけを絞って、それを検索するようにする。
-    # 今まで、@users = User.allと書いていたが、オブジェクトがjsonに返されるため、うまくいかなかった。
     #　現状は、emailでやっていく。（次にnameに直す。）
-    @users = User.where('name LIKE ?', "%#{params[:name]}%")
-    respond_to do |format|
-      format.json { render json: @users }
-    end
+    name = params[:name]
+    @users = name.present? ? User.by_name(name) : User.all
+
+    render json: @users, each_serializer: UserSerializer
   end
 
   def edit
-    @user = User.find(params[:id])
+
   end
 
   def update
-    @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_with_password(user_params)
         sign_in(@user, bypass: true)
@@ -29,6 +28,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
