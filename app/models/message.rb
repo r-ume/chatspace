@@ -23,16 +23,6 @@ class Message < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  #　この書き方、重要
-  def json_api
-    {
-        user: user.name,
-        body: body,
-        time: created_at.strftime('%Y/%m/%d %H:%M:%S'),
-        image: image.to_s
-    }
-  end
-
   private
   def body_or_image
     body.presence or image.presence

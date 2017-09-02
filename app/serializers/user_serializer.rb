@@ -18,18 +18,7 @@
 #  last_sign_in_ip        :string(255)
 #
 
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :chat_group_users
-  has_many :chat_groups, through: :chat_group_users
-  has_many :messages
-
-  validates :name,  presence: true
-  validates :email, uniqueness: true
-
-  scope :by_name, ->(name) { where('name LIKE ?', "%#{name}%")}
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :email, :name, :created_at, :updated_at, :chat_groups, :messages
 end
