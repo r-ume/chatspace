@@ -30,4 +30,6 @@ class User < ActiveRecord::Base
 
   validates :name,  presence: true
   validates :email, uniqueness: true
+
+  scope :by_name, ->(name) { where('name LIKE ?', "%#{name}%")}
 end
