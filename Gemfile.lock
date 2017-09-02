@@ -266,7 +266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers (~> 0.9)
   annotate
   byebug
   capistrano
