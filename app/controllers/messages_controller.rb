@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
         end
 
         format.json do
-          render json: { user: @message.user.name, time: @message.created_at, body: @message.body, image: @message.image.url }
+          render json: MessageSerializer.new(@message)
         end
       end
       flash[:notice] = 'successfully sent'
