@@ -1,7 +1,11 @@
 class MessagesDecorator < Draper::Decorator
 
+  def user
+    object.user
+  end
+
   def user_name
-    object.user.name
+    object.user.present? ? object.user.name : 'no-name'
   end
 
   def created_at
@@ -9,7 +13,7 @@ class MessagesDecorator < Draper::Decorator
   end
 
   def body
-    object.body
+    object.body || ''
   end
 
   def image
