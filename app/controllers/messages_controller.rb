@@ -12,8 +12,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html { render :index }
-      # mapメソッドで、userの名前を取得
-      format.json { render json: @chat_group.messages.includes(:user).map{|x| x.json_api} }
+      format.json { render json: ChatGroupSerializer.new(@chat_group) }
     end
   end
 
