@@ -51,17 +51,12 @@ $(document).on('turbolinks:load', function(){
         $(this).remove();
     });
 
-    // 検索結果リスト
-    // ユーザー検索
-    // idがuser-search-fieldのところが、
-    //  change = フォーカスが外れたときに発生する
-    //  keyupはカーソル移動や全角・半角の切り替えなどすべてのキー操作を拾う
-    //　userSearch関数を起こす。
+    // 検索結果リスト & ユーザー検索
+    // idがuser-search-fieldのところが、change = フォーカスが外れたときに発生する
+    //  keyupはカーソル移動や全角・半角の切り替えなどすべてのキー操作を拾うときに、displayUsers関数を起こす。
     // 結果をidがuser-search-fieldに出していく。
-    // idがuser-search-resultのところで、
-    // change keyupされたとき、
-    // 定義された関数を起こす。
-    $('#user-search-field').on('click', displayUsers);
+    // idがuser-search-resultのところで、changeされたとき、定義された関数を起こす。
+    $('#user-search-field').change(displayUsers);
 
     // 非同期通信
     // ユーザー検索（インクリメンタルサーチ）
