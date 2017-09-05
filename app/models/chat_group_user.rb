@@ -3,8 +3,8 @@
 # Table name: chat_group_users
 #
 #  id            :integer          not null, primary key
-#  chat_group_id :integer
-#  user_id       :integer
+#  chat_group_id :integer          not null
+#  user_id       :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
