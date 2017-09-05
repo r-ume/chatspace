@@ -1,6 +1,6 @@
 class CreateChatGroupUsers < ActiveRecord::Migration
   def change
-    create_table :chat_group_users do |t|
+    create_table :chat_group_users, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
       t.references :chat_group, null: false, foreign_key: true
       t.references :user,       null: false, foreign_key: true
       t.timestamps              null: false
