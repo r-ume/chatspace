@@ -11,20 +11,16 @@
 #  updated_at    :datetime         not null
 #
 
-class Message < ActiveRecord::Base
-  # Associations
-  belongs_to :user
-  belongs_to :chat_group
+DUMMY_REPEAT_TIMES = 100
 
-  # validations
-  validates :body_or_image, presence: true
-  validates :user,          presence: true
-  validates :chat_group,    presence: true
+DUMMY_REPEAT_TIMES.times do |num|
 
-  mount_uploader :image, ImageUploader
+  message = Message.new(
+    body:          Faker::HowIMetYourMother.quote,
+    chat_group_id: ChatGroup.pluck(:id).sample,
+    user_id:       User.pluck(:id).sample,
+    image:         Faker::Avatar.image
+  )
 
-  private
-  def body_or_image
-    body.presence or image.presence
-  end
+  message.save
 end

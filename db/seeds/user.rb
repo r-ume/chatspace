@@ -18,6 +18,15 @@
 #  updated_at             :datetime         not null
 #
 
-class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :name, :created_at, :updated_at, :chat_groups, :messages
+DUMMY_REPEAT_TIMES = 20
+
+DUMMY_REPEAT_TIMES.times do |num|
+
+  user = User.new(
+      name:     Faker::HowIMetYourMother.character,
+      email:    Faker::Internet.email(Faker::HowIMetYourMother.character) ,
+      password: Faker::Internet.password(10, 20),
+  )
+
+  user.save
 end

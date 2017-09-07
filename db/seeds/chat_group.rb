@@ -8,8 +8,11 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
-  factory :chat_group do
-    name { Faker::Pokemon.name }
-  end
+chat_groups = []
+DUMMY_CREATE_NUM = 5
+
+1.upto(DUMMY_CREATE_NUM) do |num|
+  chat_group = ChatGroup.new(name: Faker::Pokemon.name)
+  chat_group.save
+  chat_groups << chat_group
 end
