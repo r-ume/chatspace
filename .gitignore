@@ -13,4 +13,4 @@
 /tmp
 .idea/
 .DS_Store
-*/uploads
+public/
