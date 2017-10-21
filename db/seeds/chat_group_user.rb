@@ -9,7 +9,14 @@
 #  updated_at    :datetime         not null
 #
 
-class ChatGroupUser < ActiveRecord::Base
-  belongs_to :chat_group
-  belongs_to :user
+DUMMY_REPEAT_NUMS = 30
+
+1.upto(DUMMY_REPEAT_NUMS) do |num|
+
+  chat_group_user = ChatGroupUser.new(
+    chat_group_id: ChatGroup.pluck(:id).sample,
+    user_id:       User.pluck(:id).sample,
+  )
+
+  chat_group_user.save
 end

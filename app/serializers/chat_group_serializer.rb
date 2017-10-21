@@ -8,8 +8,15 @@
 #  updated_at :datetime         not null
 #
 
-class ChatGroup < ActiveRecord::Base
-  has_many :chat_group_users
-  has_many :users, through: :chat_group_users
-  has_many :messages
+class ChatGroupSerializer < ActiveModel::Serializer
+  attributes :id, :name, :created_at, :updated_at, :messages, :users
+
+  def messages
+    object.messages
+  end
+
+  def users
+    object.users
+  end
+
 end

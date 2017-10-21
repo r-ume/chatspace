@@ -11,5 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
-.idea/workspace.xml
-.idea/chatspace.iml
+.idea/
+.DS_Store
+*/uploads

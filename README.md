@@ -1,21 +1,27 @@
-# ProtoSpace
+# ChatSpace
 
-## Userモデル
+A web application built by Ruby on Rails. It provides an environment where registered users can send direct messages, make groups with whoever preferred, and make chats just like twitter or facebook.
+
+![chatspace1](ImagesForReadMe/chatspace1.png)
+![chatspace2](ImagesForReadMe/chatspace2.png)
+![chatspace3](ImagesForReadMe/chatspace3.png)
+
+## User Model
   - email
   - encrypted_password
   - name
 
-## Messageモデル
+## Message Model
   - body
   - chat_group_id
   - user_id
   - image
 
-## ChatGroupモデル
+## ChatGroup Model
   - chat_group_id
   - user_id
 
-## ChatGroupUserモデル
+## ChatGroupUser Model
   - name
 
 # Associations

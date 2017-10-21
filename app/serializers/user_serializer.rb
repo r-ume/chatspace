@@ -18,13 +18,6 @@
 #  updated_at             :datetime         not null
 #
 
-FactoryGirl.define do
-  password = Faker::Internet.password(6, 128)
-
-  factory :user do
-    name                   { Faker::Internet.user_name }
-    email                  { Faker::Internet.email }
-    password               password
-    password_confirmation  password
-  end
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :email, :name, :created_at, :updated_at, :chat_groups, :messages
 end

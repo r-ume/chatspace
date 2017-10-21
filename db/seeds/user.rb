@@ -18,13 +18,15 @@
 #  updated_at             :datetime         not null
 #
 
-FactoryGirl.define do
-  password = Faker::Internet.password(6, 128)
+DUMMY_REPEAT_TIMES = 20
 
-  factory :user do
-    name                   { Faker::Internet.user_name }
-    email                  { Faker::Internet.email }
-    password               password
-    password_confirmation  password
-  end
+DUMMY_REPEAT_TIMES.times do |num|
+
+  user = User.new(
+      name:     Faker::HowIMetYourMother.character,
+      email:    Faker::Internet.email(Faker::HowIMetYourMother.character) ,
+      password: Faker::Internet.password(10, 20),
+  )
+
+  user.save
 end

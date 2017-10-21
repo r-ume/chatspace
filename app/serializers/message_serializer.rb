@@ -11,20 +11,16 @@
 #  updated_at    :datetime         not null
 #
 
-class Message < ActiveRecord::Base
-  # Associations
-  belongs_to :user
-  belongs_to :chat_group
+class MessageSerializer < ActiveModel::Serializer
+  include ActiveModel::Serialization
 
-  # validations
-  validates :body_or_image, presence: true
-  validates :user,          presence: true
-  validates :chat_group,    presence: true
+  attributes :id, :body, :image, :created_at, :updated_at, :user_name
 
-  mount_uploader :image, ImageUploader
+  def user_name
+    object.user.present? object.user.name || 'no-name'
+  end
 
-  private
-  def body_or_image
-    body.presence or image.presence
+  def user
+    object.user
   end
 end

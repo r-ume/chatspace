@@ -8,8 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-class ChatGroup < ActiveRecord::Base
-  has_many :chat_group_users
-  has_many :users, through: :chat_group_users
-  has_many :messages
+FactoryGirl.define do
+  factory :chat_group do
+    name { Faker::Pokemon.name }
+  end
 end
