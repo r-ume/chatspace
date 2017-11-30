@@ -37,12 +37,9 @@ class ChatGroupsController < ApplicationController
       flash.now[:alert] = 'グループ作成失敗'
       redirect_to edit_chat_group_path(@chat_group)
     end
-
-
   end
 
   private
-
   def set_chat_group
     @chat_group = ChatGroup.find(params[:id])
   end
