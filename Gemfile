@@ -62,6 +62,10 @@ group :development, :test do
 
   # N + 1 CHECKER
   gem 'bullet'
+
+  # LISTEN
+  gem 'listen'
+
 end
 
 group :development do
