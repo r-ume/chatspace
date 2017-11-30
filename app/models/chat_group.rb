@@ -8,8 +8,14 @@
 #  updated_at :datetime         not null
 #
 
-class ChatGroup < ActiveRecord::Base
+class ChatGroup < ApplicationRecord
+
+  # Association
   has_many :chat_group_users
   has_many :users, through: :chat_group_users
   has_many :messages
+
+  # Validation
+  validates :name, uniqueness: true, presence: true
+
 end

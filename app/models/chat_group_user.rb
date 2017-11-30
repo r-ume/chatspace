@@ -9,7 +9,13 @@
 #  updated_at    :datetime         not null
 #
 
-class ChatGroupUser < ActiveRecord::Base
+class ChatGroupUser < ApplicationRecord
+
+  # Association
   belongs_to :chat_group
   belongs_to :user
+
+  # Validation
+  validates :chat_group_id, :user_id, presence: true, numericality: { only_integer: true }
+
 end

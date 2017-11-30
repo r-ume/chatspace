@@ -18,18 +18,21 @@
 #  updated_at             :datetime         not null
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Scope
+  scope :by_name, ->(name) { where('name LIKE ?', "%#{name}%")}
+
+  # Association
   has_many :chat_group_users
   has_many :chat_groups, through: :chat_group_users
   has_many :messages
 
-  validates :name,  presence: true
-  validates :email, uniqueness: true
+  # Validation
+  validates :name, :email, presence: true, uniqueness: true
 
-  scope :by_name, ->(name) { where('name LIKE ?', "%#{name}%")}
 end

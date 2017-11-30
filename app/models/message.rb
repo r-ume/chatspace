@@ -11,16 +11,17 @@
 #  updated_at    :datetime         not null
 #
 
-class Message < ActiveRecord::Base
-  # Associations
+class Message < ApplicationRecord
+
+  # Association
   belongs_to :user
   belongs_to :chat_group
 
-  # validations
-  validates :body_or_image, presence: true
-  validates :user,          presence: true
-  validates :chat_group,    presence: true
+  # Validation
+  validates :body_or_image, :user_id, :chat_group_id, presence: true
+  validates :chat_group_id, :user_id,                 numericality: { only_integer: true }
 
+  # Uploader
   mount_uploader :image, ImageUploader
 
   private
