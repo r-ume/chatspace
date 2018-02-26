@@ -5,6 +5,7 @@ gem 'rails', '5.1.3'
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 gem 'rake', '11.3.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'puma'
 
 # SASS
 gem 'sass-rails', '~> 5.0'
