@@ -41,6 +41,7 @@ end
 
 # REACT
 gem 'react-rails'
+gem 'webpacker'
 
 group :development, :test do
   # DEBUG
