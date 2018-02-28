@@ -20,7 +20,6 @@ gem 'devise'
 
 # HAML
 gem 'haml'
-gem 'erb2haml'
 
 # IMAGE UPLOAD
 gem 'carrierwave'
@@ -39,6 +38,7 @@ gem 'unicorn'
 
 # REACT
 gem 'react-rails'
+gem 'webpacker'
 
 group :development, :test do
   # DEBUG
