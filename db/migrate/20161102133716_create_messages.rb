@@ -1,13 +1,11 @@
-class CreateMessages < ActiveRecord::Migration
+class CreateMessages < ActiveRecord::Migration[5.1]
   def change
     create_table :messages, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
-      t.text       :body,       null: false
-      t.references :chat_group, null: false, default: 0, foreign_key: true
-      t.references :user,       null: false, default: 0, foreign_key: true
-      t.string     :image,      null: false, default: ''
-      t.timestamps              null: false
+      t.text       :body,          null: false
+      t.string     :image,         null: false, default: ''
+      t.integer    :chat_group_id, null: false
+      t.integer    :user_id,       null: false
+      t.timestamps                 null: false
     end
-
-    add_index :messages, [:chat_group_id, :user_id]
   end
 end

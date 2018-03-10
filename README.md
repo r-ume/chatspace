@@ -6,23 +6,23 @@ A web application built by Ruby on Rails. It provides an environment where regis
 ![chatspace2](ImagesForReadMe/chatspace2.png)
 ![chatspace3](ImagesForReadMe/chatspace3.png)
 
-## User Model
+## User Table
   - email
   - encrypted_password
   - name
 
-## Message Model
+## Message Table
   - body
   - chat_group_id
   - user_id
   - image
+  
+## ChatGroup Table
+  - name
 
-## ChatGroup Model
+## ChatGroupUser Table
   - chat_group_id
   - user_id
-
-## ChatGroupUser Model
-  - name
 
 # Associations
 

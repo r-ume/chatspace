@@ -1,12 +1,9 @@
-class CreateChatGroupUsers < ActiveRecord::Migration
+class CreateChatGroupUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :chat_group_users, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
-      t.references :chat_group, null: false, foreign_key: true
-      t.references :user,       null: false, foreign_key: true
-      t.timestamps              null: false
+      t.integer    :chat_group_id, null: false
+      t.integer    :user_id,       null: false
+      t.timestamps                 null: false
     end
-
-    add_index :chat_group_users, [:chat_group_id, :user_id],               name: 'index_chat_groups_users_on_chat_group_id_and_user_id'
-    add_index :chat_group_users, [:chat_group_id, :user_id], unique: true, name: 'uk_chat_group_users_on_chat_group_id_and_user_id'
   end
 end
