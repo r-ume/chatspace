@@ -9,14 +9,20 @@
 #  updated_at    :datetime         not null
 #
 
-DUMMY_REPEAT_NUMS = 30
+# require '../seed_base.rb'
 
-1.upto(DUMMY_REPEAT_NUMS) do |num|
-
-  chat_group_user = ChatGroupUser.new(
-    chat_group_id: ChatGroup.pluck(:id).sample,
-    user_id:       User.pluck(:id).sample,
-  )
-
-  chat_group_user.save
+after 'fundamentals' do
+  1.upto(SeedBase::DUMMY_REPEAT_NUM) do |num|
+    begin
+      @seed = SeedBase.new(
+        model_name:    'ChatGroupUser',
+        user_id:       User.pluck(:id).sample,
+        chat_group_id: ChatGroup.pluck(:id).sample
+      )
+      @seed.save!
+      @seed.output_columns
+    rescue => error
+      @seed.output_error(error: error)
+    end
+  end
 end

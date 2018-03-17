@@ -11,16 +11,20 @@
 #  updated_at    :datetime         not null
 #
 
-DUMMY_REPEAT_TIMES = 100
-
-DUMMY_REPEAT_TIMES.times do |num|
-
-  message = Message.new(
-    body:          Faker::HowIMetYourMother.quote,
-    chat_group_id: ChatGroup.pluck(:id).sample,
-    user_id:       User.pluck(:id).sample,
-    image:         Faker::Avatar.image
-  )
-
-  message.save
+after 'fundamentals:chat_group' do
+  1.upto(SeedBase::DUMMY_REPEAT_NUM) do |num|
+    begin
+      @seed = SeedBase.new(
+        model_name:    'Message',
+        body:          Faker::HowIMetYourMother.quote,
+        chat_group_id: ChatGroup.pluck(:id).sample,
+        user_id:       User.pluck(:id).sample,
+        image:         Faker::Avatar.image
+      )
+      @seed.save!
+      @seed.output_columns
+    rescue => error
+      @seed.output_error(error: error)
+    end
+  end
 end

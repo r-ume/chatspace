@@ -8,11 +8,19 @@
 #  updated_at :datetime         not null
 #
 
-chat_groups = []
-DUMMY_CREATE_NUM = 5
+# require '../seed_base.rb'
 
-1.upto(DUMMY_CREATE_NUM) do |num|
-  chat_group = ChatGroup.new(name: Faker::Pokemon.name)
-  chat_group.save
-  chat_groups << chat_group
+after 'fundamentals:user' do
+  1.upto(SeedBase::DUMMY_REPEAT_NUM) do |num|
+    begin
+      @seed = SeedBase.new(
+        model_name: 'ChatGroup',
+        name:       Faker::HowIMetYourMother.character
+      )
+      @seed.save!
+      @seed.output_columns
+    rescue => error
+      @seed.output_error(error: error)
+    end
+  end
 end
