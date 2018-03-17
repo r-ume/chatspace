@@ -23,7 +23,6 @@ gem 'devise'
 
 # HAML
 gem 'haml'
-gem 'erb2haml'
 
 # IMAGE UPLOAD
 gem 'carrierwave'
@@ -37,8 +36,11 @@ gem 'draper'
 # JSON
 gem 'active_model_serializers', '~> 0.9'
 
-# DEPLOY
-gem 'unicorn'
+group :production do
+
+  # DEPLOY
+  gem 'unicorn'
+end
 
 group :development, :test do
   # DEBUG
@@ -67,6 +69,11 @@ group :development, :test do
   # LISTEN
   gem 'listen'
 
+  # HAML CONVERTOR
+  gem 'erb2haml'
+
+  # SEED DATA
+  gem 'seedbank'
 end
 
 group :development do
