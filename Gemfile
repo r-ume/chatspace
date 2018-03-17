@@ -33,8 +33,11 @@ gem 'draper'
 # JSON
 gem 'active_model_serializers'
 
-# DEPLOY
-gem 'unicorn'
+group :production do
+
+  # DEPLOY
+  gem 'unicorn'
+end
 
 # REACT
 gem 'react-rails'
@@ -69,6 +72,9 @@ group :development, :test do
 
   # HAML CONVERTOR
   gem 'erb2haml'
+
+  # SEED DATA
+  gem 'seedbank'
 end
 
 group :development do

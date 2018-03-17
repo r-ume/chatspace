@@ -18,15 +18,19 @@
 #  updated_at             :datetime         not null
 #
 
-DUMMY_REPEAT_TIMES = 20
+require_relative '../seed_base.rb'
 
-DUMMY_REPEAT_TIMES.times do |num|
-
-  user = User.new(
-      name:     Faker::HowIMetYourMother.character,
-      email:    Faker::Internet.email(Faker::HowIMetYourMother.character) ,
-      password: Faker::Internet.password(10, 20),
-  )
-
-  user.save
+1.upto(SeedBase::DUMMY_REPEAT_NUM) do |num|
+  begin
+    @seed = SeedBase.new(
+      model_name: 'User',
+      name:       Faker::HowIMetYourMother.character,
+      email:      Faker::Internet.email(Faker::HowIMetYourMother.character) ,
+      password:   Faker::Internet.password(10, 20)
+    )
+    @seed.save!
+    @seed.output_columns
+  rescue => error
+    @seed.output_error(error: error)
+  end
 end
