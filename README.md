@@ -6,6 +6,16 @@ A web application built by Ruby on Rails. It provides an environment where regis
 ![chatspace2](ImagesForReadMe/chatspace2.png)
 ![chatspace3](ImagesForReadMe/chatspace3.png)
 
+## Installation
+```
+$ git clone git@github.com:r-ume/chatspace.git
+$ bundle install --path vendor/bundle
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
+$ bundle exec rake db:seed:sub_fundamentals
+$ bundle exec rails s
+```
+
 ## User Table
   - email
   - encrypted_password
