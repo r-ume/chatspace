@@ -14,12 +14,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-# gem 'therubyracer', platforms: :ruby
 
 # AUTHENTICATION
 gem 'devise'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # HAML
 gem 'haml'
@@ -34,13 +31,17 @@ gem 'font-awesome-rails'
 gem 'draper'
 
 # JSON
-gem 'active_model_serializers', '~> 0.9'
+gem 'active_model_serializers'
 
 group :production do
 
   # DEPLOY
   gem 'unicorn'
 end
+
+# REACT
+gem 'react-rails'
+gem 'webpacker'
 
 group :development, :test do
   # DEBUG
