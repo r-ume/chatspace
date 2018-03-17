@@ -1,14 +1,18 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Chatspace
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css', rel: 'stylesheet'}/
     / jquery追加
-    %script{:crossorigin => "anonymous", :integrity => "sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", :src => "https://code.jquery.com/jquery-3.1.1.js"}
+    %script{crossorigin: 'anonymous', integrity: 'sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=', src: 'https://code.jquery.com/jquery-3.1.1.js'}
     = javascript_include_tag 'application'
+    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'hello_react'
+    = stylesheet_pack_tag 'application'
+
   %body
     .layout-notification
       - if notice
