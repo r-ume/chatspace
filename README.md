@@ -16,6 +16,13 @@ $ bundle exec rake db:seed:sub_fundamentals
 $ bundle exec rails s
 ```
 
+## Development in Local Environment
+```
+// Execute the both commands below, but on a different tab on your console.
+$ bundle exec rails s
+$ bundle exec webpack-dev-server
+```
+
 ## User Table
   - email
   - encrypted_password
