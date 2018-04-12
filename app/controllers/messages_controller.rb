@@ -52,6 +52,6 @@ class MessagesController < ApplicationController
   end
 
   def set_decorated_messages
-    @messages = MessagesDecorator.decorate_collection(@chat_group.messages)
+    @messages = MessagesDecorator.decorate_collection(@chat_group.messages.includes(:user))
   end
 end
