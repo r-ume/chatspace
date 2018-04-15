@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   before_action :set_chat_group,         only: %i(index create)
   before_action :set_decorated_messages, only: %i(index create)
   # CSRF対策を無効にしたい場合に入れるコード
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
     @chat_groups = current_user.chat_groups
