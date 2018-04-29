@@ -14,9 +14,3 @@
     = stylesheet_pack_tag 'application'
 
   %body
-    .layout-notification
-      - if notice
-        %p.layout-notice= notice
-      - if alert
-        %p.layout-alert= alert
-      = yield
