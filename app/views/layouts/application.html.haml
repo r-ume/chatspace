@@ -10,13 +10,8 @@
     %script{crossorigin: 'anonymous', integrity: 'sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=', src: 'https://code.jquery.com/jquery-3.1.1.js'}
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
-    = javascript_pack_tag 'hello_react'
+    = javascript_pack_tag 'app_root'
     = stylesheet_pack_tag 'application'
 
   %body
-    .layout-notification
-      - if notice
-        %p.layout-notice= notice
-      - if alert
-        %p.layout-alert= alert
-      = yield
+    = yield
